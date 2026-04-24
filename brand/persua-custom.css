@@ -1,0 +1,244 @@
+/* ============================================================
+   Persua custom styles for Docmost
+   Editavel livremente, copiado no build via Dockerfile.
+   Para desativar, remover o <link> injetado no index.html.
+   ============================================================ */
+
+/* 1. Esconde link de branding residual para docmost.com na pagina publica */
+a[href*="?ref=public-share"] {
+  display: none !important;
+}
+
+/* 2. Sidebar mais larga em qualquer navbar/aside de tree de paginas */
+.mantine-AppShell-navbar,
+aside.mantine-AppShell-aside,
+aside[class*="sidebar"],
+nav[class*="sidebar"] {
+  width: 320px !important;
+  min-width: 320px !important;
+  max-width: 320px !important;
+}
+@media (max-width: 768px) {
+  .mantine-AppShell-navbar,
+  aside.mantine-AppShell-aside {
+    width: 280px !important;
+    min-width: 280px !important;
+    max-width: 280px !important;
+  }
+}
+
+/* 3. Sidebar tree: quebra de linha sem sobreposicao
+      ------------------------------------------------------------
+      Contexto: Docmost usa react-arborist com rowHeight INLINE FIXO
+      (30px por default, patched pra 48px via sed no Dockerfile).
+
+      Classes reais do Docmost:
+      - `_row_tofwf_69` = wrapper da linha (tinha white-space: nowrap)
+      - `_node_tofwf_14` = link flex interno (height: 100%, align: center)
+      - `_treeNode_1500s_10` = container do treeNode
+
+      Nao funciona: [class*="TreeNode"] ou [class*="treeNode"] (classes
+      scopadas do Docmost comecam com _ minusculo e underscore)
+
+      Design Chief + Brand Chief: padrao Notion/Linear/Mintlify = row
+      gordinho (44-48px) + texto wrap + icone alinhado no topo. */
+
+/* 3a. Libera wrap no row e no node */
+[class*="_row_tofwf"],
+[class*="_node_tofwf"],
+[class*="_treeNode_"],
+.mantine-AppShell-navbar a,
+.mantine-AppShell-navbar button,
+aside.mantine-AppShell-aside a,
+aside.mantine-AppShell-aside button {
+  white-space: normal !important;
+}
+
+/* 3b. Texto das spans: wrap com line-height confortavel pra 2 linhas */
+[class*="_row_tofwf"] span,
+[class*="_node_tofwf"] span,
+[class*="_treeNode_"] span,
+.mantine-AppShell-navbar a span,
+.mantine-AppShell-navbar button span,
+aside.mantine-AppShell-aside a span,
+aside.mantine-AppShell-aside button span {
+  white-space: normal !important;
+  word-break: break-word !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  line-height: 1.25 !important;
+}
+
+/* 3c. Row do react-arborist: aceita a altura inline patched (48px)
+       e garante padding vertical consistente */
+[class*="_row_tofwf"] {
+  padding-block: 2px !important;
+}
+
+/* 3d. Node interno (o flex com icone + texto):
+       - align-items: center mantem icone vertical-centralizado com
+         o bloco de texto multi-linha (melhor que flex-start, que
+         desce o texto e deixa icone solto no topo) */
+[class*="_node_tofwf"] {
+  height: 100% !important;
+  align-items: center !important;
+}
+
+/* 4. Logo Persua fixa no viewport (canto superior esquerdo)
+      ------------------------------------------------------------
+      Por que position:fixed em vez de absolute:
+      - .mantine-AppShell-header (m_3b16f56b) tem position:fixed do
+        Mantine por default. Se eu sobrescrevesse com position:relative,
+        o header pararia de grudar no topo e scrollaria com o conteudo.
+      - Usar position:fixed direto no logo deixa ele pinado no viewport,
+        independente do scroll do header/conteudo. Zero dependencia do
+        layout interno do Docmost.
+      - Nao precisa `padding-left` nos filhos do header: o logo esta num
+        plano sobreposto (z-index alto), nao disputa espaco no flex.
+      - Na share page publica e na admin, o logo aparece no mesmo lugar.
+*/
+.mantine-AppShell-header::before,
+body::before {
+  content: "";
+  position: fixed;
+  top: 14px;
+  left: 22px;
+  width: 92px;
+  height: 26px;
+  background-image: url("/persua-logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left center;
+  z-index: 500;
+  pointer-events: none;
+}
+
+/* Dark mode: troca pro logo com fundo escuro (letras mais claras)
+   Docmost aplica [data-mantine-color-scheme="dark"] no <html> */
+[data-mantine-color-scheme="dark"] .mantine-AppShell-header::before,
+[data-mantine-color-scheme="dark"] body::before,
+html[data-mantine-color-scheme="dark"]::before {
+  background-image: url("/persua-logo-dark.png") !important;
+}
+
+/* Fallback via media query pra navegadores que respeitam a preferencia
+   do SO (caso Docmost nao aplique o attribute antes do CSS carregar) */
+@media (prefers-color-scheme: dark) {
+  [data-mantine-color-scheme="auto"] .mantine-AppShell-header::before,
+  [data-mantine-color-scheme="auto"] body::before {
+    background-image: url("/persua-logo-dark.png") !important;
+  }
+}
+
+/* Empurra botao/titulo do sidebar-toggle pra direita do logo.
+   Logo esta em position:fixed left:22px width:92px (termina em ~114px).
+   Margin-left 128px da ~14px de respiro entre fim do logo e o toggle,
+   evitando que o botao fique colado/escondido atras do logo. */
+.mantine-AppShell-header > *:first-child {
+  margin-left: 128px !important;
+}
+
+/* Em telas pequenas, logo menor e margem menor */
+@media (max-width: 768px) {
+  .mantine-AppShell-header::before,
+  body::before {
+    width: 72px;
+    height: 22px;
+    left: 14px;
+    top: 12px;
+  }
+  .mantine-AppShell-header > *:first-child {
+    margin-left: 100px !important;
+  }
+}
+
+/* ============================================================
+   5. Tipografia mais compacta no conteudo (padrao GitBook-like)
+   ============================================================
+   Docmost default: body 16px, h1 30px, page-title 40px, h2 24px, h3 20px
+   Isso fica muito grande em help center (compare com GitBook, Mintlify).
+
+   Target Persua: mais proximo de 15px base, h1 28px, page-title 32px,
+   hierarquia visual preservada mas texto mais denso e informativo.
+   Line-height mantem 1.6 pra legibilidade. */
+
+.ProseMirror {
+  font-size: 15px !important;
+  line-height: 1.65 !important;
+}
+
+.ProseMirror h1 {
+  font-size: 1.75rem !important; /* 28px (era 30px) */
+  margin-top: 1.75rem !important;
+}
+
+.ProseMirror h2 {
+  font-size: 1.375rem !important; /* 22px (era 24px) */
+  margin-top: 1.5rem !important;
+}
+
+.ProseMirror h3 {
+  font-size: 1.125rem !important; /* 18px (era 20px) */
+  margin-top: 1.25rem !important;
+}
+
+.ProseMirror h4,
+.ProseMirror h5,
+.ProseMirror h6 {
+  font-size: 1rem !important; /* 16px */
+}
+
+/* Titulo da pagina (H1 principal no topo) */
+.page-title .ProseMirror h1,
+._titleInput_jzn6m_35,
+[class*="_titleInput_"] {
+  font-size: 2rem !important; /* 32px (era 40px) */
+  line-height: 1.25 !important;
+}
+
+/* Listas mais compactas */
+.ProseMirror ul,
+.ProseMirror ol {
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.ProseMirror li {
+  margin-top: 0.15rem !important;
+  margin-bottom: 0.15rem !important;
+}
+
+/* Paragrafos proximos com espaco medido (nao colado, nao solto) */
+.ProseMirror p {
+  margin-top: 0.4rem !important;
+  margin-bottom: 0.4rem !important;
+}
+
+/* Padding lateral do conteudo: mantido em 3rem no desktop pra respiro,
+   mas reduzido no mobile. Docmost ja tem responsivo em 48em (768px). */
+
+/* ============================================================
+   6. Callouts (:::info, :::success, :::warning, :::danger)
+   ============================================================
+   Docmost renderiza callout como React component que usa Mantine Text
+   internamente, com tamanho proprio (nao herda do .ProseMirror).
+   Resultado: texto dentro do callout fica maior que o body.
+   Fix: forca font-size:15px em tudo que for descendente do .node-callout. */
+
+.node-callout,
+.node-callout *,
+.node-callout p,
+.node-callout li,
+.node-callout span,
+.node-callout div {
+  font-size: 15px !important;
+  line-height: 1.55 !important;
+}
+
+/* Titulo em bold dentro do callout (ex: "Pre-requisitos") fica em
+   tamanho ligeiramente maior pra hierarquia visual */
+.node-callout strong,
+.node-callout b {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+}

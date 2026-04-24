@@ -1,0 +1,107 @@
+# ============================================================================
+# .gitignore, _tools/docmost/
+# ============================================================================
+# Esse .gitignore e desenhado pro repo dedicado `docs-persua` (Opcao B do plano
+# de deploy). Tambem funciona se a pasta ficar dentro do monorepo Persua.
+#
+# Regra geral: versionar so o que e necessario pro BUILD do container e pros
+# docs operacionais. Conteudo gerado, cache, secrets e imagens pesadas ficam
+# de fora.
+
+# ----------------------------------------------------------------------------
+# Secrets (CRITICO, NUNCA commitar)
+# ----------------------------------------------------------------------------
+.env
+.env.local
+.env.production
+.env.*.local
+!.env.example
+!.env.prod.example
+
+# ----------------------------------------------------------------------------
+# Pacotes ZIP gerados (regeneraveis via scripts/build_master_zip.py)
+# ----------------------------------------------------------------------------
+import-packages/*.zip
+import-packages/
+
+# ----------------------------------------------------------------------------
+# Cache do MCP (regeneravel via agents, pesado em escala)
+# ----------------------------------------------------------------------------
+cache/flw-raw/
+
+# ----------------------------------------------------------------------------
+# Drafts Persua (adaptados do flw)
+# ----------------------------------------------------------------------------
+# Os arquivos .md de draft sao gerados pelo convert_flw_to_persua.py a partir
+# do cache/flw-raw/. Como o cache ja e ignorado, nao faz sentido versionar os
+# drafts gerados. Pilotos manuais (como conexao-whatsapp-cloud-api.md) sao
+# versionados explicitamente.
+drafts/*.md
+!drafts/conexao-whatsapp-cloud-api.md
+
+# ----------------------------------------------------------------------------
+# Imagens de assets: logica de overlay _persua/
+# ----------------------------------------------------------------------------
+# Regra: imagens flw-raw (print-*.png direto em drafts/assets/<slug>/) sao
+# IGNORADAS pois sao baixadas do CDN flw pelo convert_flw_to_persua.py.
+# Imagens Persua custom (_persua/*.png) SAO versionadas, pois sao trabalho
+# do time e representam a marca final.
+drafts/assets/*/print-*.png
+drafts/assets/*/*.md
+drafts/assets/*/*.gif
+drafts/assets/*/*.jpg
+drafts/assets/*/*.jpeg
+
+# NAO ignorar os overlays Persua dentro de _persua/
+!drafts/assets/*/_persua/
+!drafts/assets/*/_persua/**
+
+# ----------------------------------------------------------------------------
+# Python (scripts)
+# ----------------------------------------------------------------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ----------------------------------------------------------------------------
+# Sistema operacional
+# ----------------------------------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ----------------------------------------------------------------------------
+# Editores / IDEs
+# ----------------------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*~
+.project
+.settings/
+
+# ----------------------------------------------------------------------------
+# Docker volumes locais (caso apareca mapping)
+# ----------------------------------------------------------------------------
+docmost_data/
+db_data/
+redis_data/
+
+# ----------------------------------------------------------------------------
+# Logs
+# ----------------------------------------------------------------------------
+*.log
+logs/

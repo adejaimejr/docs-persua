@@ -1,0 +1,81 @@
+# Docmost Persua, docker-compose de producao (Dokploy)
+#
+# Diferencas do docker-compose.yml (dev/local):
+# - Sem `ports` expostos no host: acesso so via Traefik do Dokploy
+# - `APP_URL`, `APP_SECRET`, `POSTGRES_PASSWORD` vem de env vars (.env no Dokploy)
+# - Labels Traefik no servico docmost pra roteamento + SSL automatico
+# - Container names sem prefixo (Dokploy gerencia)
+#
+# Pre-requisitos no Dokploy:
+# - Rede externa `dokploy-network` (criada automaticamente pelo Dokploy)
+# - DNS `docs.persua.com.br` apontando pro VPS
+# - Env vars configuradas (ver .env.prod.example)
+# - Traefik com certresolver `letsencrypt` ativo (padrao Dokploy)
+
+services:
+  docmost:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: persua-docmost:pt-br
+    depends_on:
+      - db
+      - redis
+    environment:
+      APP_URL: ${APP_URL}
+      APP_SECRET: ${APP_SECRET}
+      DATABASE_URL: "postgresql://docmost:${POSTGRES_PASSWORD}@db:5432/docmost?schema=public"
+      REDIS_URL: "redis://redis:6379"
+    restart: unless-stopped
+    volumes:
+      - docmost_data:/app/data/storage
+    networks:
+      - dokploy-network
+      - docmost-internal
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=dokploy-network"
+      # Roteador HTTPS (prod)
+      - "traefik.http.routers.docmost-persua.rule=Host(`docs.persua.com.br`)"
+      - "traefik.http.routers.docmost-persua.entrypoints=websecure"
+      - "traefik.http.routers.docmost-persua.tls=true"
+      - "traefik.http.routers.docmost-persua.tls.certresolver=letsencrypt"
+      # Roteador HTTP com redirect 301 pra HTTPS
+      - "traefik.http.routers.docmost-persua-http.rule=Host(`docs.persua.com.br`)"
+      - "traefik.http.routers.docmost-persua-http.entrypoints=web"
+      - "traefik.http.routers.docmost-persua-http.middlewares=redirect-to-https"
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.permanent=true"
+      # Servico (Traefik descobre a porta interna)
+      - "traefik.http.services.docmost-persua.loadbalancer.server.port=3000"
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: docmost
+      POSTGRES_USER: docmost
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    restart: unless-stopped
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - docmost-internal
+
+  redis:
+    image: redis:7.2-alpine
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
+    networks:
+      - docmost-internal
+
+networks:
+  dokploy-network:
+    external: true
+  docmost-internal:
+    driver: bridge
+
+volumes:
+  docmost_data:
+  db_data:
+  redis_data:
