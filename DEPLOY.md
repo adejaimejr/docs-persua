@@ -240,14 +240,81 @@ Ambas requerem deploy em 2 fases: primeiro sobe, cria share, anota `<SHARE_ID>`,
 
 <!-- A cada deploy, adicionar aqui gotchas novos que forem descobertos -->
 
-### Deploy da Base de Conhecimento Persua
-- [x] Decidido: Application (nao Compose), reusa Postgres/Redis do Swarm
-- [x] Repo dedicado: github.com/adejaimejr/docs-persua (publico, push inicial OK)
-- [ ] Primeiro deploy de teste
-- [ ] Validar se build do Dockerfile funciona (patches de marca aplicados)
-- [ ] Documentar o path real do arquivo `.yml` gerado pelo Dokploy pro docmost
-- [ ] Decidir redirect raiz (Opcao A vs B) apos ver como Dokploy gera o arquivo
-- [ ] Confirmar se docs-persua container vai sozinho na rede `network_swarm_public` ou precisa labels especificos
+### Deploy da Base de Conhecimento Persua, gotchas aprendidos no primeiro deploy
+
+**Configuracao final:**
+- [x] Application (nao Compose), reusa Postgres/Redis do Swarm
+- [x] Repo dedicado: github.com/adejaimejr/docs-persua
+- [x] Build Type: Dockerfile (Nixpacks nao funciona com patches custom)
+- [x] Container Port: 3000
+- [x] Postgres compartilhado: `postgres_postgres`, db dedicado `docmost`
+- [x] Redis compartilhado: `redis_redis`, DB 4 reservado
+- [x] Volume persistente: `docs-persua-data` mapeado em `/app/data/storage`
+- [x] Constraint de placement: `node.hostname==manager1` (volume e local)
+- [x] Replicas: 1 (`replicas-max-per-node=0` pra permitir rolling update)
+- [x] Redirect raiz `/` -> share publico via patch JS no Dockerfile
+
+**Gotchas criticos descobertos:**
+
+1. **DATABASE_URL nao aceita senha base64** com `+`, `/`, `=`. Usar `openssl rand -hex 24` em vez de `-base64`. URL parsing falha silenciosamente com erro de validacao.
+
+2. **Volume DEVE estar montado ANTES do primeiro import**. Se voce sobe o app, importa, depois adiciona o volume, o Swarm reinicia o container e voce **PERDE todos os arquivos** (DB persiste mas storage some). Sintoma: `ELIFECYCLE Command failed` no log + `File not found` ao acessar imagens publicas.
+
+3. **Storage local em Swarm multi-node**: o volume nomeado e local ao node. Se o serviço migra de manager1 pra manager2, perde os arquivos. Solucoes: constraint pra fixar no node OU usar S3-compatible storage no Docmost (`STORAGE_DRIVER=s3`).
+
+4. **Eviction policy do Redis compartilhado**: o Bull/queue do Docmost loga `IMPORTANT! Eviction policy is allkeys-lru. It should be "noeviction"`. Idealmente `redis_redis` deveria estar em `noeviction`, mas se afeta outros apps, deixar como esta. Nao e bloqueante.
+
+5. **certResolver gerado pelo Dokploy**: usa `letsencrypt` (alias). Funciona, mas se der problema, trocar manualmente pra `letsencryptresolver` no arquivo `/root/swarm/stacks/applications/dokploy/data/traefik/dynamic/<app>.yml`.
+
+6. **Service status `2/1 replicas` durante restart**: Dokploy faz rolling update. Pra evitar erro "max replicas per node exceed", rodar `docker service update --replicas-max-per-node 0 <service>`.
+
+**Fluxo que funcionou (ordem importa):**
+1. DNS apontado, gerar APP_SECRET (hex) + senha postgres (hex)
+2. Rodar `sql/setup-postgres.sql` no `postgres_postgres` antes de qualquer coisa
+3. Criar Application no Dokploy: GitHub source, Dockerfile, port 3000, dominio
+4. Env vars: APP_URL, APP_SECRET, DATABASE_URL (com senha hex), REDIS_URL
+5. **PRIMEIRO** Deploy + esperar SSL emitir
+6. **DEPOIS** adicionar volume `docs-persua-data` em `/app/data/storage`
+7. **DEPOIS** adicionar constraint de node (`node.hostname==manager1`)
+8. **DEPOIS** rodar `docker service update --replicas-max-per-node 0 <service>`
+9. Esperar 1-2 min de container 100% estavel (sem restarts)
+10. Acessar UI, criar workspace + admin
+11. Settings > Import > upload do ZIP master
+12. Aguardar processamento (3-10 min, monitorar volume crescer ate ~70MB)
+13. Compartilhar publicamente, anotar `<shareId>`
+14. Atualizar Dockerfile com novo `<shareId>` no patch de redirect
+15. Commit + push -> Dokploy autodeploy
+16. Validar `https://docs.persua.com.br/` redireciona pro share
+
+### Workflow de updates pos-deploy
+
+**Mudancas pontuais (1-5 paginas)**
+- Editar pagina direto no Docmost UI (login admin)
+- Substituir imagens via drag-drop no editor
+- Salvar
+- **Nao precisa redeploy nem reimport**
+- Mantem o mesmo shareId, redirect continua funcionando
+
+**Atualizacao em massa (refazer estrutura, novos tutoriais)**
+- Editar drafts local + capturar telas novas em `_persua/`
+- `python3 scripts/build_master_zip.py` (regenera ZIP de 60MB)
+- No Docmost UI: deletar raiz "Base de Conhecimento" + esvaziar lixeira
+- Settings > Import > upload do ZIP
+- **NOVO shareId** sera gerado ao recompartilhar
+- Atualizar Dockerfile com novo shareId no patch de redirect (linha do `sed`)
+- `git push` -> Dokploy autodeploy
+
+**Apenas atualizar imagens Persua (sem mexer em texto)**
+- Drop screenshots em `drafts/assets/<slug>/_persua/print-XX.png` (mesmo nome)
+- `python3 scripts/build_master_zip.py`
+- ZIP master atualizado tem as novas imagens
+- Mas pra refletir em prod: precisa reimportar (caminho de massa) OU substituir imagem por imagem no UI
+
+**Deploy de mudancas no Dockerfile (CSS, brand assets, redirect)**
+- Editar arquivos local, commit + push
+- Dokploy autodeploy (build + recriar container)
+- Volume persiste, conteudo do DB persiste
+- **Nao precisa reimportar nada** (so afeta a imagem Docker, nao os dados)
 
 ---
 

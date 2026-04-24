@@ -33,3 +33,16 @@ RUN sed -i 's|href="/icons/favicon-32x32.png"|href="/persua-icon.png"|g' /app/ap
 # brand/persua-custom.css sem escape de aspas/quebras de linha no Dockerfile.
 # Para reverter: remover esta linha e rebuild.
 RUN sed -i 's|</head>|<link rel="stylesheet" href="/persua-custom.css?v=8" /></head>|' /app/apps/client/dist/index.html
+
+# ----------------------------------------------------------------------------
+# Redirect raiz / -> share publico da Base de Conhecimento
+# ----------------------------------------------------------------------------
+# docs.persua.com.br/ -> docs.persua.com.br/share/<id>/p/base-de-conhecimento-<sufixo>
+# Sem isso, a raiz cai na tela de login do Docmost. Como queremos help center
+# publico, redirecionamos antes de carregar o bundle React.
+#
+# IMPORTANTE: o SHARE_ID muda toda vez que a raiz e deletada e reimportada
+# via Settings > Import. Pra manter o redirect funcionando, voce tem 2 opcoes:
+#   1. Editar paginas via UI direto (mantem shareId, simples)
+#   2. Deletar/reimportar e atualizar o SHARE_ID + sufixo aqui no Dockerfile
+RUN sed -i 's|</head>|<script>if(location.pathname==="/"\&\&!location.search)location.replace("/share/o8yw2uvuas/p/base-de-conhecimento-zKTcPfquod");</script></head>|' /app/apps/client/dist/index.html
