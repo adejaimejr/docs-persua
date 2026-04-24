@@ -13,14 +13,15 @@ Tudo o que o Dokploy precisa pra fazer build + deploy da Base de Conhecimento. I
 ```
 docs-persua/
 ├── Dockerfile              # Build custom: patches PT-BR, logo, CSS, favicon
-├── docker-compose.yml      # Dev local (http://localhost:3000)
-├── docker-compose.prod.yml # Producao via Dokploy (Traefik + SSL)
+├── docker-compose.yml      # APENAS dev local (http://localhost:3000)
 ├── .env.prod.example       # Template de secrets, preencher no Dokploy UI
 ├── brand/                  # Assets de marca (logo, favicon, CSS custom)
 │   ├── persua-logo.png
 │   ├── persua-logo-dark.png
 │   ├── persua-icon.png
 │   └── persua-custom.css
+├── sql/
+│   └── setup-postgres.sql  # SQL pra criar db+user no Postgres compartilhado
 ├── scripts/                # Python, manutencao de conteudo
 │   ├── build_master_zip.py
 │   └── convert_flw_to_persua.py
@@ -32,6 +33,17 @@ docs-persua/
 ├── memory.md               # Decisoes tecnicas + gotchas
 ├── sessions.md             # Log narrativo das sessoes de trabalho
 └── tasks.md                # Backlog + historico
+```
+
+## Arquitetura de producao
+
+**Application + Dockerfile** no Dokploy (NAO Compose). Reusa Postgres e Redis ja existentes no Swarm:
+
+```
+docs.persua.com.br -> Traefik -> docs-persua (container, porta 3000)
+                                      |
+                                      +-- TCP -> postgres_postgres:5432 (db dedicado)
+                                      +-- TCP -> redis_redis:6379/4 (DB 4 reservada)
 ```
 
 ---

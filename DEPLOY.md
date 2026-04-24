@@ -158,29 +158,46 @@ Toda vez que fizer redeploy no Dokploy, o arquivo `.yml` e sobrescrito com os va
 
 ## Contexto especifico da Base de Conhecimento Persua (Docmost)
 
-### Deploy alvo
-- **Dominio:** `docs.persua.com.br`
-- **App:** Docmost self-host (community edition) + Postgres + Redis
-- **Build Type no Dokploy:** **Dockerfile** (tem Dockerfile customizado com patches PT-BR, logo, CSS)
-- **Container Port esperado:** `3000` (definido no compose, default do Docmost)
+### Decisao arquitetural
 
-### Stack de containers
-1. **docmost** (principal), porta interna `3000`, imagem custom `persua-docmost:pt-br` (build do Dockerfile local)
-2. **db** (Postgres 16-alpine), porta interna `5432`, rede interna
-3. **redis** (Redis 7.2-alpine), porta interna `6379`, rede interna
+**Application + Dockerfile (single container)**, reusando Postgres e Redis ja existentes no Swarm.
 
-### Arquivos relevantes no repo (`_tools/docmost/`)
+- **Type no Dokploy:** Application (NAO Docker Compose)
+- **Build Type:** Dockerfile (NAO Nixpacks)
+- **Container Port:** `3000`
+- **Postgres:** servico `postgres_postgres` (db dedicado: `docmost`, user dedicado)
+- **Redis:** servico `redis_redis` (DB 4 reservado, senha do Swarm)
+- **Rede:** `network_swarm_public` (compartilhada com postgres + redis)
+
+### Por que Application em vez de Compose
+
+- Postgres e Redis ja existem no Swarm: zero motivo pra subir duplicado
+- Application e mais simples no Dokploy (1 container, 1 build)
+- Evita conflitos de rede e nomes de servico
+- Backup do Postgres ja gerenciado centralmente
+
+### Pre-deploy (ordem importa)
+
+1. DNS apontando `docs.persua.com.br` pro VPS
+2. Postgres preparado: rodar `sql/setup-postgres.sql` no `postgres_postgres` (cria db + user docmost com senha forte)
+3. Pegar senha do Redis no Dokploy (servico `redis_redis`)
+4. Gerar `APP_SECRET` com `openssl rand -hex 32`
+5. Criar Application no Dokploy via UI
+
+### Arquivos relevantes no repo (`docs-persua`)
 - `Dockerfile`: aplica patches PT-BR, logo Persua, CSS custom, favicon, rowHeight do react-arborist
-- `docker-compose.yml`: versao dev local (`localhost:3000`)
-- `docker-compose.prod.yml`: versao prod (TBD, possivelmente desnecessaria se Dokploy usar file provider ao inves de labels)
-- `.env.prod.example`: template de env vars (`APP_URL`, `APP_SECRET`, `POSTGRES_PASSWORD`)
-- `deploy/README.md`: runbook genial de 11 passos (escrito antes de saber da arquitetura Swarm + file provider, pode precisar de update)
+- `docker-compose.yml`: dev local apenas (postgres + redis suben juntos pra teste local, NAO usado em prod)
+- `.env.prod.example`: template de env vars com URLs apontando pra postgres_postgres e redis_redis
+- `sql/setup-postgres.sql`: prepara db + user no Postgres compartilhado antes do deploy
+- `deploy/README.md`: runbook completo de 11 passos
 
-### Env vars obrigatorias
+### Env vars de producao (preencher no Dokploy UI)
+
 ```
 APP_URL=https://docs.persua.com.br
 APP_SECRET=<openssl rand -hex 32>
-POSTGRES_PASSWORD=<openssl rand -base64 24>
+DATABASE_URL=postgresql://docmost:<senha-do-setup-postgres>@postgres_postgres:5432/docmost?schema=public
+REDIS_URL=redis://default:<senha-do-redis-swarm>@redis_redis:6379/4
 ```
 
 ### Dados a importar pos-deploy
@@ -224,12 +241,13 @@ Ambas requerem deploy em 2 fases: primeiro sobe, cria share, anota `<SHARE_ID>`,
 <!-- A cada deploy, adicionar aqui gotchas novos que forem descobertos -->
 
 ### Deploy da Base de Conhecimento Persua
-- [ ] A fazer: primeiro deploy de teste
-- [ ] Conferir se Dokploy usa labels Traefik do compose ou gera arquivo file provider (provavelmente file provider, pelo padrao descrito)
-- [ ] Confirmar container port que o Dokploy detecta/requer na UI
+- [x] Decidido: Application (nao Compose), reusa Postgres/Redis do Swarm
+- [x] Repo dedicado: github.com/adejaimejr/docs-persua (publico, push inicial OK)
+- [ ] Primeiro deploy de teste
 - [ ] Validar se build do Dockerfile funciona (patches de marca aplicados)
 - [ ] Documentar o path real do arquivo `.yml` gerado pelo Dokploy pro docmost
 - [ ] Decidir redirect raiz (Opcao A vs B) apos ver como Dokploy gera o arquivo
+- [ ] Confirmar se docs-persua container vai sozinho na rede `network_swarm_public` ou precisa labels especificos
 
 ---
 
