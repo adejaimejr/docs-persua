@@ -53,6 +53,51 @@ Coisas que DEVEM ser lembradas em qualquer sessao futura.
 - Formato: `/share/:shareId/p/:pageSlug`
 - includeChildren=true mostra subpaginas na sidebar do share publico
 
+## Producao live (deploy concluido em 2026-04-24)
+
+### URLs e identificadores
+- **Producao:** `https://docs.persua.com.br` (redirect raiz funciona)
+- **Share publico atual:** `https://docs.persua.com.br/share/o8yw2uvuas/p/base-de-conhecimento-zKTcPfquod`
+- **shareId atual:** `o8yw2uvuas`
+- **Slug suffix atual:** `zKTcPfquod`
+- **App no Dokploy:** `docs-persua-rccr3e`
+- **Volume Swarm:** `docs-persua-data` em `/app/data/storage`
+- **Imagem Docker:** `docs-persua-rccr3e:latest` (build a cada push do repo)
+
+### Postgres compartilhado
+- Servico Swarm: `postgres_postgres`
+- Database dedicado: `docmost`
+- User dedicado: `docmost` (senha hex 24 chars, NAO base64)
+- Setup: `sql/setup-postgres.sql`
+
+### Redis compartilhado
+- Servico Swarm: `redis_redis`
+- DB reservado pro Docmost: 4
+- Eviction policy: `allkeys-lru` (deveria ser `noeviction`, mas e compartilhado)
+
+### Constraints e replicas
+```bash
+docker service update --constraint-add 'node.hostname==manager1' docs-persua-rccr3e
+docker service update --replicas-max-per-node 0 docs-persua-rccr3e
+```
+
+### Como atualizar shareId apos reimport
+```bash
+./scripts/update-share-id.sh https://docs.persua.com.br/share/<NOVO_ID>/p/base-de-conhecimento-<SUFIXO>
+git add Dockerfile && git commit -m "update: novo shareId" && git push
+# Dokploy autodeploy em ~1-2 min
+```
+
+### GOTCHAS aprendidos no deploy
+1. **Senha do Postgres em hex (nao base64)** pra DATABASE_URL nao quebrar
+2. **Volume MONTADO ANTES do primeiro import** (senao perde arquivos quando container reinicia)
+3. **Build Type: Dockerfile** no Dokploy (NAO Nixpacks, NAO Compose)
+4. **Container Port 3000** explicito na UI (Dokploy as vezes detecta 5000 errado)
+5. **certResolver `letsencrypt`** funciona como alias (nao precisa trocar pra `letsencryptresolver`)
+6. **Reimport gera novo shareId**: precisa atualizar Dockerfile e fazer push (script automatiza)
+
+---
+
 ## Deploy em producao (Dokploy)
 
 ### Dominio e infra

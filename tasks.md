@@ -1,17 +1,25 @@
 # Tasks, Tutoriais Docmost Persua
 
-## Deploy em producao (docs.persua.com.br)
-- Runbook: ver `deploy/README.md` (11 passos)
-- Arquivos: `docker-compose.prod.yml`, `.env.prod.example`
-- Proximos passos (user):
-  - [ ] DNS `docs.persua.com.br` apontando pro VPS Dokploy
-  - [ ] Gerar APP_SECRET e POSTGRES_PASSWORD com `openssl`
-  - [ ] Criar app no Dokploy + env vars + dominio
-  - [ ] Aguardar SSL (Let's Encrypt)
-  - [ ] Primeiro acesso: criar workspace admin
-  - [ ] Import do ZIP master (60MB)
-  - [ ] Compartilhar raiz publicamente
-  - [ ] (Opcional) Redirect raiz -> share via Dockerfile patch
+## Producao em docs.persua.com.br (LIVE)
+
+- **URL publica:** https://docs.persua.com.br (redirect automatico pra share root)
+- **Share atual:** `o8yw2uvuas` -> base-de-conhecimento-zKTcPfquod
+- **Repo:** github.com/adejaimejr/docs-persua
+- **Volume:** `docs-persua-data` (531 imagens, 67.8 MB)
+- **Postgres:** `postgres_postgres` (db dedicado `docmost`)
+- **Redis:** `redis_redis` (DB 4 reservado)
+- **Constraint:** node.hostname=manager1
+
+### Fluxo de update em producao (Caminho 2 escolhido)
+
+1. Edita drafts + captura telas em `_persua/` localmente
+2. `python3 scripts/build_master_zip.py`
+3. `git add . && git commit -m "..." && git push`
+4. No Docmost UI: delete raiz "Base de Conhecimento" + esvazia lixeira
+5. Settings > Import > upload do ZIP atualizado
+6. Recompartilha publicamente, copia URL gerada
+7. `./scripts/update-share-id.sh <URL_DO_NOVO_SHARE>`
+8. `git add Dockerfile && git commit && git push` (Dokploy autodeploy)
 
 ## Em progresso / aguardando usuario
 - **Capturar telas Persua** em batch e dropar nos respectivos `drafts/assets/<slug>/_persua/`

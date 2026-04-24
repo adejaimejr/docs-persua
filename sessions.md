@@ -35,6 +35,68 @@ Log narrativo de cada sessao de trabalho. Entrada mais recente no topo.
 
 ---
 
+## 2026-04-24, Sessao 12, Deploy ao vivo em docs.persua.com.br
+
+**Status:** Base de Conhecimento Persua publicada e funcionando em producao.
+
+**URL publica:** https://docs.persua.com.br/share/o8yw2uvuas/p/base-de-conhecimento-zKTcPfquod
+**URL com redirect raiz:** https://docs.persua.com.br/ (cai direto na KB via JS redirect)
+
+### Fluxo de deploy executado
+
+1. **Repo dedicado** github.com/adejaimejr/docs-persua criado e populado (29 arquivos, 1MB versionado)
+2. **Aplicacao no Dokploy** criada como Application + Dockerfile (NAO Compose)
+3. **Postgres compartilhado** (`postgres_postgres`): db `docmost` + user dedicado, senha hex
+4. **Redis compartilhado** (`redis_redis`): DB 4 reservado, senha do Swarm
+5. **Build OK** apos rebuild (patches PT-BR, logo, CSS, dark logo, redirect)
+6. **SSL emitido** via Let's Encrypt automatico (Traefik)
+
+### Problemas encontrados e fix
+
+1. **DATABASE_URL inválida**: senha base64 com `+/=` quebra o parser. Fix: `openssl rand -hex 24` em vez de `-base64`.
+
+2. **Storage volatil no primeiro import**: container processou import com volume nao montado. Resultado: 156 paginas no DB mas zero arquivos no `/app/data/storage`. Fix: adicionar volume `docs-persua-data` em `/app/data/storage`, esperar container estabilizar, deletar raiz, reimportar.
+
+3. **Service status `2/1 replicas`** depois de update: causava task pending com erro "max replicas per node exceed". Fix: `docker service update --replicas-max-per-node 0 docs-persua-rccr3e`.
+
+4. **Storage local em multi-node Swarm**: volume nomeado e local ao node. Fix: `docker service update --constraint-add 'node.hostname==manager1' docs-persua-rccr3e`.
+
+### Reimport bem sucedido
+
+Apos volume montado e container estavel:
+- 20:06 → upload do ZIP (60MB)
+- 20:08 → 531 imagens processadas, 67.8MB final no volume
+- 20:09 → todas as imagens carregando no share publico
+
+### Redirect raiz configurado
+
+Patch `sed` adicionado no Dockerfile injetando `<script>` que faz `location.replace("/share/<id>/p/base-de-conhecimento-<sufixo>")` quando o pathname for `/`.
+
+Script auxiliar criado: `scripts/update-share-id.sh <URL>` automatiza a troca do shareId no Dockerfile a cada reimport.
+
+### Workflow de updates escolhido pelo CEO
+
+**Caminho 2 (atualizar via ZIP)** decidido como padrao:
+1. Edita drafts + dropa imagens em `_persua/` localmente
+2. `python3 scripts/build_master_zip.py` gera novo ZIP
+3. Git commit + push (mantem repo sincronizado)
+4. No Docmost UI: deleta raiz + esvazia lixeira + Settings > Import
+5. Recompartilha publicamente, pega novo shareId
+6. `./scripts/update-share-id.sh <URL_DO_NOVO_SHARE>`
+7. Git commit + push -> Dokploy autodeploy do redirect
+
+### Proximo passo (sessao 13+)
+
+User vai capturar varias telas Persua e atualizar overlay `_persua/`. Sessao seguinte vai assistir o fluxo de batch update + reimport + redirect.
+
+### Arquivos atualizados/criados
+
+- `Dockerfile` (linha de redirect raiz)
+- `DEPLOY.md` (documentacao completa do deploy + workflow + gotchas)
+- `scripts/update-share-id.sh` (helper pra atualizar shareId)
+
+---
+
 ## 2026-04-24, Sessao 11, Setup de deploy em producao (Dokploy + docs.persua.com.br)
 
 **Contexto:** CEO decidiu o dominio `docs.persua.com.br` (aprovado: padrao help center). Ja tem Dokploy rodando em VPS. Quer subir producao com o ZIP master ja pronto (60 MB, 156 paginas, 528 imagens).
