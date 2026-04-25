@@ -57,9 +57,9 @@ Coisas que DEVEM ser lembradas em qualquer sessao futura.
 
 ### URLs e identificadores
 - **Producao:** `https://docs.persua.com.br` (redirect raiz funciona)
-- **Share publico atual:** `https://docs.persua.com.br/share/o8yw2uvuas/p/base-de-conhecimento-zKTcPfquod`
-- **shareId atual:** `o8yw2uvuas`
-- **Slug suffix atual:** `zKTcPfquod`
+- **Share publico atual:** `https://docs.persua.com.br/share/6n6rfnlxmq/p/base-de-conhecimento-8WQkapJosF` (atualizado 2026-04-25)
+- **shareId atual:** `6n6rfnlxmq`
+- **Slug suffix atual:** `8WQkapJosF`
 - **App no Dokploy:** `docs-persua-rccr3e`
 - **Volume Swarm:** `docs-persua-data` em `/app/data/storage`
 - **Imagem Docker:** `docs-persua-rccr3e:latest` (build a cada push do repo)
@@ -95,6 +95,38 @@ git add Dockerfile && git commit -m "update: novo shareId" && git push
 4. **Container Port 3000** explicito na UI (Dokploy as vezes detecta 5000 errado)
 5. **certResolver `letsencrypt`** funciona como alias (nao precisa trocar pra `letsencryptresolver`)
 6. **Reimport gera novo shareId**: precisa atualizar Dockerfile e fazer push (script automatiza)
+
+### GOTCHAS aprendidos na operacao continua (sessao 13, 2026-04-25)
+
+7. **Autodeploy do Dokploy nao acionou apos `git push`** (pelo menos nao automaticamente). Apos push do Dockerfile, o redirect raiz continuou apontando pro share antigo. HTML servido tinha `last-modified` 4h antes dos commits. Workaround: stop + redeploy manual no painel Dokploy. A investigar: webhook GitHub e config Auto Deploy.
+
+8. **`docker ps -q -f name=postgres_postgres` retorna vazio em Swarm multi-node**. O Postgres nao roda no manager1, ta em outro no. Pra rodar SQL em prod, **subir container psql temporario na rede do docs-persua**:
+   ```bash
+   PG=$(docker ps --format '{{.Names}}' | grep docs-persua | head -1)
+   DB=$(docker exec "$PG" sh -c 'echo "$DATABASE_URL"' | sed 's|?.*||')  # remove ?schema=public (Prismaism, psql nao aceita)
+   NET=$(docker inspect "$PG" --format '{{range $k,$v := .NetworkSettings.Networks}}{{$k}}{{"\n"}}{{end}}' | grep -v -E '^(ingress|host|bridge|none)$' | head -1)
+   docker run --rm -i --network "$NET" postgres:16-alpine psql "$DB" -t -A < dump-state.sql > /tmp/output.json
+   ```
+   Network esperada: `network_swarm_public`.
+
+9. **Heredoc com SQL inline corrompe quando colado em alguns clientes**. Auto-link de `p.id`, `pp.id`, `s.search_indexing` vira `[p.id](http://p.id)` no paste. **Sempre baixar SQL via curl do GitHub**, nao colar inline:
+   ```bash
+   curl -fsSL https://raw.githubusercontent.com/adejaimejr/docs-persua/main/scripts/dump-state.sql -o /tmp/dump-state.sql
+   ```
+
+10. **Failed to upload import file no Docmost UI** (intermitente, ZIP integro de 77 MB). Causa exata nao identificada (sessao expirada, timeout proxy, ou estado interno do upload handler). **Workaround: reiniciar container no Dokploy**, depois retentar.
+
+### URL stability (snapshot + restore SQL)
+
+11. **`shares.key` e `pages.slug_id` regeneram a cada delete+reimport**. Quebra todos os deep-links ja distribuidos. Solucao: **snapshot baseline + restore SQL pos-reimport**.
+    - `snapshot/urls-baseline.json`: estado canonico, versionado.
+    - `scripts/dump-state.sql`: SELECT recursivo que produz JSON do estado atual.
+    - `scripts/build-restore-sql.py`: compara baseline vs estado atual, gera UPDATEs.
+    - Match feito por **path hierarquico** (Base de Conhecimento / Secao / Pagina), estavel desde que titulos + estrutura nao mudem.
+    - Schema permite UPDATE direto: `pages.slug_id` e `shares.key` sao colunas comuns sem trigger.
+    - Cuidado: `shares` tem `ON DELETE CASCADE` por `page_id`, entao quando deleta a raiz o share desaparece junto. Apos reimport, **recompartilhar publicamente** (gera key temporaria) antes de rodar o restore SQL.
+
+12. **Quando atualizar `urls-baseline.json`**: SO quando estrutura muda (paginas novas, renomeadas, hierarquia alterada). Slugs aleatorios e key NAO devem mudar entre reimports. Se mudar titulo de uma pagina existente, regerar baseline (heuristica de match por path falha pra essa pagina).
 
 ---
 

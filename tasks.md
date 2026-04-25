@@ -63,8 +63,8 @@ docker exec -i $(docker ps -q -f name=postgres_postgres) \
 ## Em progresso / aguardando usuario
 - **Capturar telas Persua** em batch e dropar nos respectivos `drafts/assets/<slug>/_persua/`
   - 101 tutoriais com drafts prontos, 556 imagens (incluindo jpg/jpeg/gif) no total
-  - 45 imagens Persua ja capturadas em 14 slugs = 8% do total (baseline 2026-04-24)
-  - 4 slugs 100% Persua: acessando-pela-web, abrir-dados-do-contato, adicionar-etapa, assumir-atendimento
+  - 101 imagens Persua ja capturadas em 28 slugs = 18% do total (baseline 2026-04-25)
+  - 6 slugs 100% Persua: abrir-dados-do-contato, acessando-pela-web, adicionar-etapa, assumir-atendimento, como-exportar-mensagens-na-plataforma, como-exportar-relatorio-na-plataforma
   - Pra cada batch capturado, rodar `python3 scripts/build_master_zip.py` regenera o ZIP automaticamente
 
 ## Proximo passo
@@ -92,9 +92,9 @@ docker exec -i $(docker ps -q -f name=postgres_postgres) \
 ### ZIP master
 - 156 paginas .md (11 secoes + subpaginas aninhadas ate nivel 3)
 - 556 imagens (png + jpg/jpeg/gif suportados desde 2026-04-24)
-- Tamanho: 76 MB
+- Tamanho: 77 MB
 - 120 paginas populadas com draft, 0 placeholders
-- Cobertura overlay Persua: 45/556 imagens (8%)
+- Cobertura overlay Persua: 101/556 imagens (18%) em 28 slugs
 
 ## Backlog priorizado
 
@@ -106,7 +106,7 @@ docker exec -i $(docker ps -q -f name=postgres_postgres) \
 - [ ] Iniciar atendimento
 - [x] Assumir atendimento (1/1 Persua, gif animado)
 - [ ] Transferir atendimento
-- [ ] Concluir e classificar atendimento
+- [~] Concluir e classificar atendimento (5/7 Persua, parcial)
 
 ### Prioridade MEDIA, Conexao + Portfolio + Perfil (14 paginas)
 - [ ] Conexao via QR Code (Coexistencia)
@@ -184,6 +184,10 @@ docker exec -i $(docker ps -q -f name=postgres_postgres) \
 - [x] Batch capturas Persua: 13 slugs novos + 36 imagens em _persua/ (2026-04-24)
 - [x] Suporte jpg/jpeg/gif no overlay _persua/ no build_master_zip.py (2026-04-24)
 - [x] Deploy do batch: ZIP reimportado, share atualizado pra gbgk3jiefs (2026-04-24)
+- [x] Batch 2 de capturas Persua: +56 imagens, 14 slugs (CEO autonomo, commit b456f44) (2026-04-25)
+- [x] Reimport batch 2 + share atualizado pra 6n6rfnlxmq / 8WQkapJosF (2026-04-25)
+- [x] Infra de URL stability: dump-state.sql + build-restore-sql.py + snapshot/ (commit cccf00c) (2026-04-25)
+- [x] Baseline canonico capturado de prod: 156 paginas + share 6n6rfnlxmq (commit 7d83d8f) (2026-04-25)
 
 ## Fora de escopo (nao fazer)
 - Destravar features da EE (API, SSO, Audit, IA): licenca comercial

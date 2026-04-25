@@ -4,6 +4,68 @@ Log narrativo de cada sessao de trabalho. Entrada mais recente no topo.
 
 ---
 
+## 2026-04-25, Sessao 13, Batch de capturas + URL stability via snapshot SQL
+
+**Contexto:** Apos deploy em prod (sessao 12), CEO comecou a dropar capturas Persua nos `drafts/assets/<slug>/_persua/` em batch. Ao mesmo tempo, surgiu o incomodo de que cada delete+reimport regenerava o shareId raiz **e** o slug_id de cada pagina, invalidando todos os deep-links ja distribuidos pra clientes (ex: `/share/o8yw2uvuas/p/conexao-whats-app-cloud-api-O05cRTzS61`).
+
+### Batch 1 de capturas (manha)
+- 14 slugs novos com Persua dropados, 36 imagens (35 PNG + 1 JPG + 1 GIF)
+- Build script `build_master_zip.py` so processava `*.png`. Estendido pra suportar tambem `.jpg`, `.jpeg`, `.gif` (consertou bug latente onde drafts referenciavam `.jpg/.gif` mas eles nunca entravam no ZIP).
+- 4 slugs ficaram 100% Persua: acessando-pela-web, abrir-dados-do-contato, adicionar-etapa, assumir-atendimento.
+- Cobertura global subiu de 9/245 (3%) pra 45/556 (8%).
+- Deploy: commits 341102a (drafts), ec56598 (shareId gbgk3jiefs), b358aff (tasks.md).
+
+### Autodeploy do Dokploy nao acionou
+- Apos `git push`, o redirect raiz continuou apontando pro share antigo. CEO confirmou que o site abria em `/login` em vez de redirecionar.
+- Diagnostico: HTML servido tinha `last-modified` 4h antes dos commits, ou seja o container nunca foi rebuildado pelo autodeploy.
+- Workaround: CEO fez **stop + redeploy manual** no painel Dokploy, e o redirect passou a funcionar.
+- A investigar na proxima sessao: webhook GitHub -> Dokploy ou config "Auto Deploy".
+
+### Batch 2 (CEO autonomo) + erro de import
+- CEO dropou mais imagens, rodou o build sozinho e fez `git commit/push` (commit b456f44, +56 imagens, 14 slugs).
+- Ao tentar import no Docmost UI: "Failed to upload import file".
+- ZIP integro localmente (`unzip -t` OK, 77 MB, abaixo do limite de 200 MB do Docmost).
+- Workaround: CEO **reiniciou o container** no Dokploy e o upload passou. Causa exata nao confirmada (sessao expirada / timeout do proxy / estado interno do upload handler).
+- Apos o reimport, recompartilhou e gerou novo share: `6n6rfnlxmq` / suffix `8WQkapJosF`.
+- Dockerfile atualizado e push (commit 383690c). Tasks.md tambem (aee7ce1).
+
+### URL stability, infra criada (commit cccf00c)
+- Schema do Docmost: `pages.slug_id` e `shares.key` sao colunas comuns no Postgres, gerados pela app na criacao. UPDATE direto no banco e seguro.
+- Plano: snapshot baseline versionado, restore SQL gerado pos-reimport.
+- Arquivos criados:
+  - `scripts/dump-state.sql`, recursive CTE que produz JSON com hierarquia de paginas + shares.
+  - `scripts/build-restore-sql.py`, compara baseline vs estado atual e gera UPDATEs (match por path hierarquico).
+  - `snapshot/README.md`, doc da pasta.
+  - `.gitignore` atualizado pra ignorar `snapshot/state-*.json` e `snapshot/restore*.sql` (transientes).
+- `tasks.md` runbook revisado pra integrar o passo 7-11 (dump + restore SQL).
+
+### Captura do baseline canonico (commit 7d83d8f)
+- CEO rodou `dump-state.sql` em prod via container `postgres:16-alpine` temporario na rede `network_swarm_public`.
+- Tropecos no caminho:
+  1. `docker ps -q -f name=postgres_postgres` retornou vazio em manager1, Postgres roda em outro no do Swarm.
+  2. Heredoc com SQL inline foi corrompido pelo cliente (auto-link de `p.id`, `pp.id` virou Markdown link).
+  3. `psql` reclamou de `?schema=public` na URL (Prismaism). Removido com `${DB_URL%\?*}`.
+- Solucao final: `curl` do SQL do GitHub + container temporario na network do docs-persua.
+- Baseline salvo em `snapshot/urls-baseline.json` (42 KB, 156 paginas, share `6n6rfnlxmq`).
+- Validacoes: zero paths duplicados, key bate com URL atual, slug `O05cRTzS61` da pagina exemplo bate.
+
+### Resumo de commits (sessao 13)
+- `341102a` 13 slugs Persua + jpg/gif overlay
+- `b358aff` tasks.md pos-batch-1
+- `ec56598` shareId gbgk3jiefs
+- `b456f44` (CEO autonomo) +56 imagens, 14 slugs
+- `383690c` shareId 6n6rfnlxmq
+- `aee7ce1` tasks.md pos-batch-2
+- `cccf00c` URL stability infra
+- `7d83d8f` baseline canonico capturado
+
+### Proximos passos
+- Validar o ciclo completo de URL stability na proxima rodada de imagens (rodar `dump-state.sql` apos reimport, gerar `restore.sql`, aplicar e confirmar que links profundos antigos continuam vivos).
+- Investigar autodeploy Dokploy (webhook).
+- Continuar capturas: 10 slugs parciais aguardando completar (ver tasks.md).
+
+---
+
 ## 2026-04-23, Sessao 8, Logo dark mode + spacing do sidebar (consulta chiefs)
 
 **Contexto:** Sessao 7 fixou a barra e o logo. User aprovou, pediu 2 coisas:
