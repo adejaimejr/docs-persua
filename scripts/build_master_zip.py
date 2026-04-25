@@ -17,7 +17,7 @@ Fluxo de conteudo:
 4. Para pagina pai com subs, gera cards H3 das subpaginas
 
 Overlay _persua/:
-- Para cada `<slug>/print-NN.png`, checa `<slug>/_persua/print-NN.png`
+- Para cada `<slug>/print-NN.{png,jpg,jpeg,gif}`, checa `<slug>/_persua/print-NN.<ext>`
 - Se existe, usa a Persua no ZIP (mesma path final, so muda a origem)
 - Relatorio final mostra % Persua vs flw pendentes
 """
@@ -32,6 +32,8 @@ import zipfile
 import urllib.parse
 from pathlib import Path
 from typing import Optional
+
+IMG_EXTS = ("*.png", "*.jpg", "*.jpeg", "*.gif")
 
 BASE = Path(__file__).resolve().parent.parent  # _tools/docmost
 STAGING = Path("/tmp/docmost-master")
@@ -946,7 +948,11 @@ def build():
             per_tutorial.setdefault(slug, {"persua": 0, "flw": 0})
             persua_overlay = slug_dir / "_persua"
 
-            for flw_img in sorted(slug_dir.glob("*.png")):
+            flw_imgs = []
+            for pattern in IMG_EXTS:
+                flw_imgs.extend(slug_dir.glob(pattern))
+
+            for flw_img in sorted(flw_imgs):
                 fname = flw_img.name
                 persua_img = persua_overlay / fname
                 dest = STAGING / "assets" / slug / fname
@@ -974,14 +980,14 @@ def build():
 
     # Relatorio
     total_md = sum(1 for p in STAGING.rglob("*.md"))
-    total_png = sum(1 for p in STAGING.rglob("*.png"))
+    total_imgs = sum(1 for p in STAGING.rglob("*") if p.is_file() and p.suffix.lower() in (".png", ".jpg", ".jpeg", ".gif"))
     total_icons = len(metadata_pages)
     zip_size_kb = OUT_ZIP.stat().st_size // 1024
 
     print(f"ZIP gerado: {OUT_ZIP}")
     print(f"Tamanho: {zip_size_kb} KB")
     print(f"Paginas (.md): {total_md}")
-    print(f"Imagens (.png): {total_png}")
+    print(f"Imagens: {total_imgs}")
     print(f"Icones mapeados em metadata: {total_icons}")
     print(f"Paginas populadas (draft): {populated_count}")
     print(f"Paginas placeholder: {placeholder_count}")
