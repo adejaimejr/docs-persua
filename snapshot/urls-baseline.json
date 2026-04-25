@@ -1,0 +1,1262 @@
+{
+  "generated_at": "2026-04-25T13:46:15.187533+00:00",
+  "page_count": 156,
+  "pages": [
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-a6857e69f478",
+      "path": "Base de Conhecimento",
+      "slug_id": "8WQkapJosF",
+      "title": "Base de Conhecimento",
+      "depth": 1,
+      "position": "a0Ajl"
+    },
+    {
+      "id": "019dc2b8-afa6-77be-8c28-24c3f46e41a1",
+      "path": "Base de Conhecimento / Ajustes",
+      "slug_id": "q6izPXY4PV",
+      "title": "Ajustes",
+      "depth": 2,
+      "position": "a91eP"
+    },
+    {
+      "id": "019dc2b8-afa5-75b7-bd2c-6b31e9b5592a",
+      "path": "Base de Conhecimento / Ajustes / Conta",
+      "slug_id": "KKWYxcOKN0",
+      "title": "Conta",
+      "depth": 3,
+      "position": "a01IR"
+    },
+    {
+      "id": "019dc2b8-afa5-75b7-bd2c-6319ee1e19f7",
+      "path": "Base de Conhecimento / Ajustes / Conta / Horário de atendimento",
+      "slug_id": "eHbQjjFcBn",
+      "title": "Horário de atendimento",
+      "depth": 4,
+      "position": "a12qu"
+    },
+    {
+      "id": "019dc2b8-afa5-75b7-bd2c-679f9b097e68",
+      "path": "Base de Conhecimento / Ajustes / Conta / Remover Canal de Atendimento",
+      "slug_id": "AMIhAVjxoF",
+      "title": "Remover Canal de Atendimento",
+      "depth": 4,
+      "position": "a00jD"
+    },
+    {
+      "id": "019dc2b8-afa6-77be-8c27-ec90bb32c559",
+      "path": "Base de Conhecimento / Ajustes / Equipes",
+      "slug_id": "caYDE5w2ZP",
+      "title": "Equipes",
+      "depth": 3,
+      "position": "a11jB"
+    },
+    {
+      "id": "019dc2b8-afa5-75b7-bd2c-6e691b2070cb",
+      "path": "Base de Conhecimento / Ajustes / Equipes / Cadastrar equipe",
+      "slug_id": "0mUIMsGgJ2",
+      "title": "Cadastrar equipe",
+      "depth": 4,
+      "position": "a02Fd"
+    },
+    {
+      "id": "019dc2b8-afa5-75b7-bd2c-73c8aa5611c2",
+      "path": "Base de Conhecimento / Ajustes / Equipes / Distribuição e transbordo de atendimento",
+      "slug_id": "385VlLetmC",
+      "title": "Distribuição e transbordo de atendimento",
+      "depth": 4,
+      "position": "a11XW"
+    },
+    {
+      "id": "019dc2b8-afa5-75b7-bd2c-75b8b1b2e405",
+      "path": "Base de Conhecimento / Ajustes / Equipes / Tipo de associação usuário x supervisor",
+      "slug_id": "P1gRvAzMgJ",
+      "title": "Tipo de associação usuário x supervisor",
+      "depth": 4,
+      "position": "a29Us"
+    },
+    {
+      "id": "019dc2b8-afa6-77be-8c27-fef6641d6d89",
+      "path": "Base de Conhecimento / Ajustes / Integrações",
+      "slug_id": "R6zP6gAnIE",
+      "title": "Integrações",
+      "depth": 3,
+      "position": "a26jg"
+    },
+    {
+      "id": "019dc2b8-afa6-77be-8c27-f1c930534bdb",
+      "path": "Base de Conhecimento / Ajustes / Integrações / Botão do WhatsApp e tag de rastreamento",
+      "slug_id": "BZBr5hpwjV",
+      "title": "Botão do WhatsApp e tag de rastreamento",
+      "depth": 4,
+      "position": "a05tc"
+    },
+    {
+      "id": "019dc2b8-afa6-77be-8c27-f798a4420944",
+      "path": "Base de Conhecimento / Ajustes / Integrações / Renovar token do Instagram e Messenger",
+      "slug_id": "WfkAOBoNk6",
+      "title": "Renovar token do Instagram e Messenger",
+      "depth": 4,
+      "position": "a11Q9"
+    },
+    {
+      "id": "019dc2b8-afa6-77be-8c27-fbdd3033c059",
+      "path": "Base de Conhecimento / Ajustes / Integrações / Transcrição de áudio",
+      "slug_id": "ZMeglXpYnc",
+      "title": "Transcrição de áudio",
+      "depth": 4,
+      "position": "a24z0"
+    },
+    {
+      "id": "019dc2b8-afa6-77be-8c28-12bd21c17b4d",
+      "path": "Base de Conhecimento / Ajustes / Modelo de Mensagens",
+      "slug_id": "1nPIJCuYwi",
+      "title": "Modelo de Mensagens",
+      "depth": 3,
+      "position": "a30xp"
+    },
+    {
+      "id": "019dc2b8-afa6-77be-8c28-01b1ed6bfcf8",
+      "path": "Base de Conhecimento / Ajustes / Modelo de Mensagens / Cadastrar modelos de mensagem",
+      "slug_id": "BoGG4GV2MT",
+      "title": "Cadastrar modelos de mensagem",
+      "depth": 4,
+      "position": "a09bl"
+    },
+    {
+      "id": "019dc2b8-afa6-77be-8c28-0533aa06a0f1",
+      "path": "Base de Conhecimento / Ajustes / Modelo de Mensagens / Como criar modelo de mensagem",
+      "slug_id": "AEoHmsqwkO",
+      "title": "Como criar modelo de mensagem",
+      "depth": 4,
+      "position": "a14h7"
+    },
+    {
+      "id": "019dc2b8-afa6-77be-8c28-08c719a89573",
+      "path": "Base de Conhecimento / Ajustes / Modelo de Mensagens / Editar modelos de mensagem",
+      "slug_id": "oxPowaqO7C",
+      "title": "Editar modelos de mensagem",
+      "depth": 4,
+      "position": "a22sw"
+    },
+    {
+      "id": "019dc2b8-afa6-77be-8c28-0fd273d1d93d",
+      "path": "Base de Conhecimento / Ajustes / Modelo de Mensagens / Mensagens de Marketing x Mensagens de Utilidade",
+      "slug_id": "JssCMdiUhk",
+      "title": "Mensagens de Marketing x Mensagens de Utilidade",
+      "depth": 4,
+      "position": "a33TS"
+    },
+    {
+      "id": "019dc2b8-afa6-77be-8c28-2167445e0f2c",
+      "path": "Base de Conhecimento / Ajustes / Usuários",
+      "slug_id": "Yzf81mmYvD",
+      "title": "Usuários",
+      "depth": 3,
+      "position": "a45Ks"
+    },
+    {
+      "id": "019dc2b8-afa6-77be-8c28-17e31c2f46c0",
+      "path": "Base de Conhecimento / Ajustes / Usuários / Cadastrar usuários",
+      "slug_id": "cnrcWZOwuA",
+      "title": "Cadastrar usuários",
+      "depth": 4,
+      "position": "a12Gz"
+    },
+    {
+      "id": "019dc2b8-afa6-77be-8c28-1a6cd2143ac9",
+      "path": "Base de Conhecimento / Ajustes / Usuários / Editar foto do usuário",
+      "slug_id": "Q6cq5hP80F",
+      "title": "Editar foto do usuário",
+      "depth": 4,
+      "position": "a230V"
+    },
+    {
+      "id": "019dc2b8-afa6-77be-8c28-1cdefa326651",
+      "path": "Base de Conhecimento / Ajustes / Usuários / Tipos de perfis de usuários",
+      "slug_id": "8NqVfekg0D",
+      "title": "Tipos de perfis de usuários",
+      "depth": 4,
+      "position": "a0Ado"
+    },
+    {
+      "id": "019dc2b8-afa8-7058-b6ee-07cb3cfe8458",
+      "path": "Base de Conhecimento / Apps",
+      "slug_id": "zVTM63NXGV",
+      "title": "Apps",
+      "depth": 2,
+      "position": "a714I"
+    },
+    {
+      "id": "019dc2b8-afa7-769f-84cf-b78421a91883",
+      "path": "Base de Conhecimento / Apps / Campanhas",
+      "slug_id": "JYjr6Uv37I",
+      "title": "Campanhas",
+      "depth": 3,
+      "position": "a0Af9"
+    },
+    {
+      "id": "019dc2b8-afa6-77be-8c28-28ac2e836341",
+      "path": "Base de Conhecimento / Apps / Campanhas / Arquivar campanha",
+      "slug_id": "SJZDRwbdeM",
+      "title": "Arquivar campanha",
+      "depth": 4,
+      "position": "a45or"
+    },
+    {
+      "id": "019dc2b8-afa6-77be-8c28-2ff0cdf730d5",
+      "path": "Base de Conhecimento / Apps / Campanhas / Consultar campanha",
+      "slug_id": "Fk9RZT9hJL",
+      "title": "Consultar campanha",
+      "depth": 4,
+      "position": "a26cH"
+    },
+    {
+      "id": "019dc2b8-afa6-77be-8c28-31d201284c24",
+      "path": "Base de Conhecimento / Apps / Campanhas / Criar modelo de mensagem para campanha",
+      "slug_id": "7Iqc3IU9AD",
+      "title": "Criar modelo de mensagem para campanha",
+      "depth": 4,
+      "position": "a15FP"
+    },
+    {
+      "id": "019dc2b8-afa6-77be-8c28-353fb02bfbb6",
+      "path": "Base de Conhecimento / Apps / Campanhas / Criar nova campanha",
+      "slug_id": "hjQ5B2fxhH",
+      "title": "Criar nova campanha",
+      "depth": 4,
+      "position": "a02P7"
+    },
+    {
+      "id": "019dc2b8-afa7-769f-84cf-ad15084b4f10",
+      "path": "Base de Conhecimento / Apps / Campanhas / Exportar campanha",
+      "slug_id": "AhNiMCbQOU",
+      "title": "Exportar campanha",
+      "depth": 4,
+      "position": "a30h0"
+    },
+    {
+      "id": "019dc2b8-afa7-769f-84cf-b23af78e1d67",
+      "path": "Base de Conhecimento / Apps / Campanhas / Riscos e custos da campanha",
+      "slug_id": "GygesKszLz",
+      "title": "Riscos e custos da campanha",
+      "depth": 4,
+      "position": "a58Lw"
+    },
+    {
+      "id": "019dc2b8-afa7-769f-84cf-d6bfd3f5508a",
+      "path": "Base de Conhecimento / Apps / Chatbot",
+      "slug_id": "bbQTdnbpNh",
+      "title": "Chatbot",
+      "depth": 3,
+      "position": "a14jO"
+    },
+    {
+      "id": "019dc2b8-afa7-769f-84cf-cbcadce1a5a7",
+      "path": "Base de Conhecimento / Apps / Chatbot / Criando um chatbot",
+      "slug_id": "XM9Fe4AJpE",
+      "title": "Criando um chatbot",
+      "depth": 4,
+      "position": "a10v3"
+    },
+    {
+      "id": "019dc2b8-afa7-769f-84cf-c634ac5dcadf",
+      "path": "Base de Conhecimento / Apps / Chatbot / Enviar Mensagem",
+      "slug_id": "Td10T68yUC",
+      "title": "Enviar Mensagem",
+      "depth": 4,
+      "position": "a085f"
+    },
+    {
+      "id": "019dc2b8-afa7-769f-84cf-ce611ba4f790",
+      "path": "Base de Conhecimento / Apps / Chatbot / Pergunta Dinâmica",
+      "slug_id": "uDfL2oqwM0",
+      "title": "Pergunta Dinâmica",
+      "depth": 4,
+      "position": "a24XG"
+    },
+    {
+      "id": "019dc2b8-afa7-769f-84cf-d00793540f91",
+      "path": "Base de Conhecimento / Apps / Chatbot / Tipos de Chatbot",
+      "slug_id": "7VC1YZdBrI",
+      "title": "Tipos de Chatbot",
+      "depth": 4,
+      "position": "a3BxB"
+    },
+    {
+      "id": "019dc2b8-afa7-769f-84cf-c279f9d188a7",
+      "path": "Base de Conhecimento / Apps / Chat Interno",
+      "slug_id": "5Y2HFpwZsw",
+      "title": "Chat Interno",
+      "depth": 3,
+      "position": "a58ef"
+    },
+    {
+      "id": "019dc2b8-afa7-769f-84cf-bad83cc5f724",
+      "path": "Base de Conhecimento / Apps / Chat Interno / Habilitar o App",
+      "slug_id": "LKxybICCtm",
+      "title": "Habilitar o App",
+      "depth": 4,
+      "position": "a00q1"
+    },
+    {
+      "id": "019dc2b8-afa7-769f-84cf-bc4ee42cdd18",
+      "path": "Base de Conhecimento / Apps / Chat Interno / Tipos de Conversa no Chat Interno",
+      "slug_id": "VTxdcjvc2i",
+      "title": "Tipos de Conversa no Chat Interno",
+      "depth": 4,
+      "position": "a10z1"
+    },
+    {
+      "id": "019dc2b8-afa7-769f-84cf-ddc39bca0f04",
+      "path": "Base de Conhecimento / Apps / Distribuição de Atendimentos",
+      "slug_id": "7I7v1zcxrd",
+      "title": "Distribuição de Atendimentos",
+      "depth": 3,
+      "position": "a68B9"
+    },
+    {
+      "id": "019dc2b8-afa7-769f-84cf-d9123199f971",
+      "path": "Base de Conhecimento / Apps / Distribuição de Atendimentos / Distribuição de atendimentos",
+      "slug_id": "ot54f8E3oS",
+      "title": "Distribuição de atendimentos",
+      "depth": 4,
+      "position": "a03bs"
+    },
+    {
+      "id": "019dc2b8-afa7-769f-84cf-e51ad9196bc9",
+      "path": "Base de Conhecimento / Apps / Grupos do WhatsApp (App)",
+      "slug_id": "DXjv0596Md",
+      "title": "Grupos do WhatsApp (App)",
+      "depth": 3,
+      "position": "a76uC"
+    },
+    {
+      "id": "019dc2b8-afa7-769f-84cf-e31799dfecfe",
+      "path": "Base de Conhecimento / Apps / Grupos do WhatsApp (App) / Habilitar o App",
+      "slug_id": "jV4j1UkbFM",
+      "title": "Habilitar o App",
+      "depth": 4,
+      "position": "a06ff"
+    },
+    {
+      "id": "019dc2b8-afa7-769f-84d0-0163c6b2d244",
+      "path": "Base de Conhecimento / Apps / IA, Agentes Inteligentes",
+      "slug_id": "e4x1zNRiE8",
+      "title": "IA, Agentes Inteligentes",
+      "depth": 3,
+      "position": "a33da"
+    },
+    {
+      "id": "019dc2b8-afa7-769f-84cf-e9770af29560",
+      "path": "Base de Conhecimento / Apps / IA, Agentes Inteligentes / Aba Configurações",
+      "slug_id": "5UeCrmWfio",
+      "title": "Aba Configurações",
+      "depth": 4,
+      "position": "a02GT"
+    },
+    {
+      "id": "019dc2b8-afa7-769f-84cf-ed826b39a650",
+      "path": "Base de Conhecimento / Apps / IA, Agentes Inteligentes / Habilidades",
+      "slug_id": "TG8EQNHp3H",
+      "title": "Habilidades",
+      "depth": 4,
+      "position": "a20GH"
+    },
+    {
+      "id": "019dc2b8-afa7-769f-84cf-f209fa390c72",
+      "path": "Base de Conhecimento / Apps / IA, Agentes Inteligentes / Indicador de Digitando",
+      "slug_id": "vDHtxUT1ho",
+      "title": "Indicador de Digitando",
+      "depth": 4,
+      "position": "a440M"
+    },
+    {
+      "id": "019dc2b8-afa7-769f-84cf-f48b3b9ed32f",
+      "path": "Base de Conhecimento / Apps / IA, Agentes Inteligentes / Novo Agente",
+      "slug_id": "MCPlaUcBE5",
+      "title": "Novo Agente",
+      "depth": 4,
+      "position": "a1AgU"
+    },
+    {
+      "id": "019dc2b8-afa7-769f-84cf-fbd572b0e0ee",
+      "path": "Base de Conhecimento / Apps / IA, Agentes Inteligentes / Simular Tempo de Digitação",
+      "slug_id": "ZSPG9JsucA",
+      "title": "Simular Tempo de Digitação",
+      "depth": 4,
+      "position": "a3B1k"
+    },
+    {
+      "id": "019dc2b8-afa7-769f-84cf-fcb5c8931a72",
+      "path": "Base de Conhecimento / Apps / IA, Agentes Inteligentes / Versões dos Agentes",
+      "slug_id": "AHm1zoH3fC",
+      "title": "Versões dos Agentes",
+      "depth": 4,
+      "position": "a53NE"
+    },
+    {
+      "id": "019dc2b8-afa8-7058-b6ed-bafb557d37df",
+      "path": "Base de Conhecimento / Apps / Mensagens Agendadas",
+      "slug_id": "8vSSnKeDrz",
+      "title": "Mensagens Agendadas",
+      "depth": 3,
+      "position": "a46gu"
+    },
+    {
+      "id": "019dc2b8-afa7-769f-84d0-04d06ed711d4",
+      "path": "Base de Conhecimento / Apps / Mensagens Agendadas / Agendamentos pelo CRM",
+      "slug_id": "HzxcP4RPcx",
+      "title": "Agendamentos pelo CRM",
+      "depth": 4,
+      "position": "a24Yp"
+    },
+    {
+      "id": "019dc2b8-afa7-769f-84d0-0b0c8fb8f6ec",
+      "path": "Base de Conhecimento / Apps / Mensagens Agendadas / Como Gerenciar os Agendamentos",
+      "slug_id": "u0IMl9o1nF",
+      "title": "Como Gerenciar os Agendamentos",
+      "depth": 4,
+      "position": "a11sM"
+    },
+    {
+      "id": "019dc2b8-afa8-7058-b6ed-b6107d4b7adb",
+      "path": "Base de Conhecimento / Apps / Mensagens Agendadas / Modelo para Mensagens Agendadas",
+      "slug_id": "AbQckT9tKZ",
+      "title": "Modelo para Mensagens Agendadas",
+      "depth": 4,
+      "position": "a03oI"
+    },
+    {
+      "id": "019dc2b8-afa8-7058-b6ed-ceee9018fca8",
+      "path": "Base de Conhecimento / Apps / Pagamentos (App)",
+      "slug_id": "irlI4Ucmzs",
+      "title": "Pagamentos (App)",
+      "depth": 3,
+      "position": "a80mk"
+    },
+    {
+      "id": "019dc2b8-afa8-7058-b6ed-bce7c9513ddd",
+      "path": "Base de Conhecimento / Apps / Pagamentos (App) / Ativar App de pagamento",
+      "slug_id": "jSR1966Kgt",
+      "title": "Ativar App de pagamento",
+      "depth": 4,
+      "position": "a03ra"
+    },
+    {
+      "id": "019dc2b8-afa8-7058-b6ed-c362d0e36837",
+      "path": "Base de Conhecimento / Apps / Pagamentos (App) / Cancelar Estornar pagamento",
+      "slug_id": "szfVhRrgcD",
+      "title": "Cancelar Estornar pagamento",
+      "depth": 4,
+      "position": "a11N6"
+    },
+    {
+      "id": "019dc2b8-afa8-7058-b6ed-c682957e8ceb",
+      "path": "Base de Conhecimento / Apps / Pagamentos (App) / Consultar pagamento",
+      "slug_id": "8troXGlrj4",
+      "title": "Consultar pagamento",
+      "depth": 4,
+      "position": "a2AOo"
+    },
+    {
+      "id": "019dc2b8-afa8-7058-b6ed-c97048bd6e14",
+      "path": "Base de Conhecimento / Apps / Pagamentos (App) / Integrar com banco Asaas",
+      "slug_id": "6doRFGaAFH",
+      "title": "Integrar com banco Asaas",
+      "depth": 4,
+      "position": "a33JY"
+    },
+    {
+      "id": "019dc2b8-afa8-7058-b6ed-f36177286b58",
+      "path": "Base de Conhecimento / Apps / Sequências",
+      "slug_id": "kMl0c7p0sC",
+      "title": "Sequências",
+      "depth": 3,
+      "position": "a25Tn"
+    },
+    {
+      "id": "019dc2b8-afa8-7058-b6ed-d3643ef07ab1",
+      "path": "Base de Conhecimento / Apps / Sequências / Adicionar etapa",
+      "slug_id": "u6IqUWAb1m",
+      "title": "Adicionar etapa",
+      "depth": 4,
+      "position": "a22J4"
+    },
+    {
+      "id": "019dc2b8-afa8-7058-b6ed-d493a6c97fd8",
+      "path": "Base de Conhecimento / Apps / Sequências / Criar sequência",
+      "slug_id": "4DOYpoqpqw",
+      "title": "Criar sequência",
+      "depth": 4,
+      "position": "a08RK"
+    },
+    {
+      "id": "019dc2b8-afa8-7058-b6ed-d97e778f52b8",
+      "path": "Base de Conhecimento / Apps / Sequências / Desabilitar / Excluir sequência",
+      "slug_id": "Z1iP8t3KkO",
+      "title": "Desabilitar / Excluir sequência",
+      "depth": 4,
+      "position": "a7B0F"
+    },
+    {
+      "id": "019dc2b8-afa8-7058-b6ed-de53b3a1ef1c",
+      "path": "Base de Conhecimento / Apps / Sequências / Finalizar sequência",
+      "slug_id": "bOKOvYRrhP",
+      "title": "Finalizar sequência",
+      "depth": 4,
+      "position": "a55f9"
+    },
+    {
+      "id": "019dc2b8-afa8-7058-b6ed-e14939c6d7bf",
+      "path": "Base de Conhecimento / Apps / Sequências / Incluir contato na sequência",
+      "slug_id": "3HSx3bE2xi",
+      "title": "Incluir contato na sequência",
+      "depth": 4,
+      "position": "a3A1r"
+    },
+    {
+      "id": "019dc2b8-afa8-7058-b6ed-e69d789aa5a9",
+      "path": "Base de Conhecimento / Apps / Sequências / Objetivo da sequência",
+      "slug_id": "SYadJc2JSx",
+      "title": "Objetivo da sequência",
+      "depth": 4,
+      "position": "a17L7"
+    },
+    {
+      "id": "019dc2b8-afa8-7058-b6ed-ead2dc695594",
+      "path": "Base de Conhecimento / Apps / Sequências / Reiniciar sequência",
+      "slug_id": "QVIUUPkloj",
+      "title": "Reiniciar sequência",
+      "depth": 4,
+      "position": "a64tx"
+    },
+    {
+      "id": "019dc2b8-afa8-7058-b6ed-eed2f3f3602a",
+      "path": "Base de Conhecimento / Apps / Sequências / Visualizar contatos",
+      "slug_id": "ZKFMaihxEH",
+      "title": "Visualizar contatos",
+      "depth": 4,
+      "position": "a4AOn"
+    },
+    {
+      "id": "019dc2b8-afa8-7058-b6ed-fbfa24bb9863",
+      "path": "Base de Conhecimento / Apps / Tempo de Segurança",
+      "slug_id": "KJ0vgdNk3N",
+      "title": "Tempo de Segurança",
+      "depth": 3,
+      "position": "a96Sc"
+    },
+    {
+      "id": "019dc2b8-afa8-7058-b6ed-f7fae753640d",
+      "path": "Base de Conhecimento / Apps / Tempo de Segurança / Como Corrigir Problemas com a Sincronização do Tempo de Segurança",
+      "slug_id": "YduaVrYGFQ",
+      "title": "Como Corrigir Problemas com a Sincronização do Tempo de Segurança",
+      "depth": 4,
+      "position": "a09Fg"
+    },
+    {
+      "id": "019dc2b8-afa8-7058-b6ee-02e2402bffce",
+      "path": "Base de Conhecimento / Apps / Transcrição de Áudio com IA",
+      "slug_id": "hqnpgrktE6",
+      "title": "Transcrição de Áudio com IA",
+      "depth": 3,
+      "position": "aA4w1"
+    },
+    {
+      "id": "019dc2b8-afa8-7058-b6ed-fddd66dbfbeb",
+      "path": "Base de Conhecimento / Apps / Transcrição de Áudio com IA / Degustação de Transcrição de Áudio",
+      "slug_id": "I5fr05ffkT",
+      "title": "Degustação de Transcrição de Áudio",
+      "depth": 4,
+      "position": "a03sB"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fee-476579760c3f",
+      "path": "Base de Conhecimento / Atendimento",
+      "slug_id": "15zg8GdAK5",
+      "title": "Atendimento",
+      "depth": 2,
+      "position": "a5A0D"
+    },
+    {
+      "id": "019dc2b8-afa8-7058-b6ee-150814d2c0f5",
+      "path": "Base de Conhecimento / Atendimento / Central de Atendimento",
+      "slug_id": "7KpZYR05fI",
+      "title": "Central de Atendimento",
+      "depth": 3,
+      "position": "a07FJ"
+    },
+    {
+      "id": "019dc2b8-afa8-7058-b6ee-0ed502c582f3",
+      "path": "Base de Conhecimento / Atendimento / Central de Atendimento / Acessando a Plataforma pela Web",
+      "slug_id": "88vbur4eiX",
+      "title": "Acessando a Plataforma pela Web",
+      "depth": 4,
+      "position": "a0B3s"
+    },
+    {
+      "id": "019dc2b8-afa8-7058-b6ee-11166f494851",
+      "path": "Base de Conhecimento / Atendimento / Central de Atendimento / Acessando a Plataforma pelo Aplicativo Móvel",
+      "slug_id": "Mta4U1uccN",
+      "title": "Acessando a Plataforma pelo Aplicativo Móvel",
+      "depth": 4,
+      "position": "a19L2"
+    },
+    {
+      "id": "019dc2b8-afa8-7058-b6ee-081dcd1295a2",
+      "path": "Base de Conhecimento / Atendimento / Central de Atendimento / Dados do Contato e Gestão Rápida",
+      "slug_id": "6BMRm5PZp6",
+      "title": "Dados do Contato e Gestão Rápida",
+      "depth": 4,
+      "position": "a24zE"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fee-0c0acad40d88",
+      "path": "Base de Conhecimento / Atendimento / Ferramentas de Interação",
+      "slug_id": "w2vT6DLn5N",
+      "title": "Ferramentas de Interação",
+      "depth": 3,
+      "position": "a21CK"
+    },
+    {
+      "id": "019dc2b8-afa8-7058-b6ee-1bbd291561cb",
+      "path": "Base de Conhecimento / Atendimento / Ferramentas de Interação / Agendar Mensagem",
+      "slug_id": "aeqSz9awZi",
+      "title": "Agendar Mensagem",
+      "depth": 4,
+      "position": "a768Y"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fee-075e666ac9b9",
+      "path": "Base de Conhecimento / Atendimento / Ferramentas de Interação / Enviar Áudio",
+      "slug_id": "PGeUucfHht",
+      "title": "Enviar Áudio",
+      "depth": 4,
+      "position": "a2AIG"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fed-f31df89050af",
+      "path": "Base de Conhecimento / Atendimento / Ferramentas de Interação / Enviar Documento",
+      "slug_id": "krjOlRMMqp",
+      "title": "Enviar Documento",
+      "depth": 4,
+      "position": "a48Au"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fed-f5646e04fed6",
+      "path": "Base de Conhecimento / Atendimento / Ferramentas de Interação / Enviar Imagem",
+      "slug_id": "UBTlrckw8B",
+      "title": "Enviar Imagem",
+      "depth": 4,
+      "position": "a03iE"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fee-0065b8249b69",
+      "path": "Base de Conhecimento / Atendimento / Ferramentas de Interação / Enviar Vídeo",
+      "slug_id": "PbZ2F6qbe0",
+      "title": "Enviar Vídeo",
+      "depth": 4,
+      "position": "a192A"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fee-08bd358454fa",
+      "path": "Base de Conhecimento / Atendimento / Ferramentas de Interação / Gravar Áudio",
+      "slug_id": "L2tADdnqoa",
+      "title": "Gravar Áudio",
+      "depth": 4,
+      "position": "a35KQ"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fed-f998ff9853c0",
+      "path": "Base de Conhecimento / Atendimento / Ferramentas de Interação / Mensagens Rápidas",
+      "slug_id": "MFIKIpOOks",
+      "title": "Mensagens Rápidas",
+      "depth": 4,
+      "position": "a6Bo8"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fed-fd90d27b1596",
+      "path": "Base de Conhecimento / Atendimento / Ferramentas de Interação / Modelo de Mensagem",
+      "slug_id": "DNymOmkeL6",
+      "title": "Modelo de Mensagem",
+      "depth": 4,
+      "position": "a5ASo"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fee-1eae3a3f1828",
+      "path": "Base de Conhecimento / Atendimento / Grupos do WhatsApp",
+      "slug_id": "blUM4s316P",
+      "title": "Grupos do WhatsApp",
+      "depth": 3,
+      "position": "a44g3"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fee-177ea838367b",
+      "path": "Base de Conhecimento / Atendimento / Grupos do WhatsApp / Criar Grupos (API Não Oficial)",
+      "slug_id": "mHloNHC5pj",
+      "title": "Criar Grupos (API Não Oficial)",
+      "depth": 4,
+      "position": "a25vG"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fee-1849d9b7ac00",
+      "path": "Base de Conhecimento / Atendimento / Grupos do WhatsApp / Criar Grupos (API Oficial)",
+      "slug_id": "57P6HDZ06d",
+      "title": "Criar Grupos (API Oficial)",
+      "depth": 4,
+      "position": "a16ab"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fee-11c028f9223d",
+      "path": "Base de Conhecimento / Atendimento / Grupos do WhatsApp / Gerenciar Grupos (Arquivar, Bloquear, Sair, Excluir)",
+      "slug_id": "X6CgpuvuZv",
+      "title": "Gerenciar Grupos (Arquivar, Bloquear, Sair, Excluir)",
+      "depth": 4,
+      "position": "a05J7"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fee-25702b298f80",
+      "path": "Base de Conhecimento / Atendimento / Integração com o CRM",
+      "slug_id": "5nHYjdJgoz",
+      "title": "Integração com o CRM",
+      "depth": 3,
+      "position": "a36LR"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fee-207a6cdd0833",
+      "path": "Base de Conhecimento / Atendimento / Integração com o CRM / Criar Cards Através do Atendimento",
+      "slug_id": "eqDhDyEpoC",
+      "title": "Criar Cards Através do Atendimento",
+      "depth": 4,
+      "position": "a0Bof"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fee-41470d884578",
+      "path": "Base de Conhecimento / Atendimento / Operações no Atendimento",
+      "slug_id": "N3ivi5gEhP",
+      "title": "Operações no Atendimento",
+      "depth": 3,
+      "position": "a1C8m"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fee-2cc2dacff90d",
+      "path": "Base de Conhecimento / Atendimento / Operações no Atendimento / Assumir Atendimento",
+      "slug_id": "0mDByTya5v",
+      "title": "Assumir Atendimento",
+      "depth": 4,
+      "position": "a1BJI"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fee-32fe9e888ff8",
+      "path": "Base de Conhecimento / Atendimento / Operações no Atendimento / Concluir e Classificar Atendimento",
+      "slug_id": "qrwFF9YHhw",
+      "title": "Concluir e Classificar Atendimento",
+      "depth": 4,
+      "position": "a49nE"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fee-34d354d98810",
+      "path": "Base de Conhecimento / Atendimento / Operações no Atendimento / Iniciar Atendimento",
+      "slug_id": "HJFDFc8QgX",
+      "title": "Iniciar Atendimento",
+      "depth": 4,
+      "position": "a08DE"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fee-2b9f215c96bc",
+      "path": "Base de Conhecimento / Atendimento / Operações no Atendimento / Preferências de Arquivamento",
+      "slug_id": "CfeXzxdpJE",
+      "title": "Preferências de Arquivamento",
+      "depth": 4,
+      "position": "a53tt"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fee-3ad0bd865b3c",
+      "path": "Base de Conhecimento / Atendimento / Operações no Atendimento / Reiniciar Atendimento",
+      "slug_id": "FpvnucpRp1",
+      "title": "Reiniciar Atendimento",
+      "depth": 4,
+      "position": "a39rz"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fee-3f5c6767221c",
+      "path": "Base de Conhecimento / Atendimento / Operações no Atendimento / Transferir Atendimento",
+      "slug_id": "PrFCXO1I1g",
+      "title": "Transferir Atendimento",
+      "depth": 4,
+      "position": "a294M"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-13e4f24b9590",
+      "path": "Base de Conhecimento / Comece Aqui",
+      "slug_id": "Yy6jWJGI2U",
+      "title": "Comece Aqui",
+      "depth": 2,
+      "position": "a07Vm"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-0ba1a496337a",
+      "path": "Base de Conhecimento / Comece Aqui / Acessando a Plataforma pela Web",
+      "slug_id": "f97oMw7Y9W",
+      "title": "Acessando a Plataforma pela Web",
+      "depth": 3,
+      "position": "a01Gi"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-0e9e73780e37",
+      "path": "Base de Conhecimento / Comece Aqui / Acessando a Plataforma pelo Aplicativo Móvel",
+      "slug_id": "Aaq7yszJZO",
+      "title": "Acessando a Plataforma pelo Aplicativo Móvel",
+      "depth": 3,
+      "position": "a13Um"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-0402b2f57a93",
+      "path": "Base de Conhecimento / Comece Aqui / Dados do Contato e Gestão Rápida",
+      "slug_id": "jwvPHYvR4Q",
+      "title": "Dados do Contato e Gestão Rápida",
+      "depth": 3,
+      "position": "a24w1"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-2d4c5c29edcf",
+      "path": "Base de Conhecimento / Conexão WhatsApp",
+      "slug_id": "Rdw8bX4RXg",
+      "title": "Conexão WhatsApp",
+      "depth": 2,
+      "position": "a12yb"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-18931e2a5d54",
+      "path": "Base de Conhecimento / Conexão WhatsApp / Conexão API Oficial via QR Code (Coexistência)",
+      "slug_id": "Hc0FtO8Luf",
+      "title": "Conexão API Oficial via QR Code (Coexistência)",
+      "depth": 3,
+      "position": "a0B50"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-16e931d2bbe6",
+      "path": "Base de Conhecimento / Conexão WhatsApp / Conexão WhatsApp Cloud API",
+      "slug_id": "O05cRTzS61",
+      "title": "Conexão WhatsApp Cloud API",
+      "depth": 3,
+      "position": "a123D"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-1c98d4ffa34e",
+      "path": "Base de Conhecimento / Conexão WhatsApp / Desativar contas de anúncio",
+      "slug_id": "33wS5m7tnR",
+      "title": "Desativar contas de anúncio",
+      "depth": 3,
+      "position": "a50Ml"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-239a0cd5583b",
+      "path": "Base de Conhecimento / Conexão WhatsApp / Portabilidade de número",
+      "slug_id": "BpSj4NU9bB",
+      "title": "Portabilidade de número",
+      "depth": 3,
+      "position": "a225z"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-2556c317e7fd",
+      "path": "Base de Conhecimento / Conexão WhatsApp / Remover conexão QR Code (Coexistência)",
+      "slug_id": "eoddKJt7CC",
+      "title": "Remover conexão QR Code (Coexistência)",
+      "depth": 3,
+      "position": "a34dW"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-2a42e4e5a8c2",
+      "path": "Base de Conhecimento / Conexão WhatsApp / Remover número do portfólio",
+      "slug_id": "v0PWDKbnuR",
+      "title": "Remover número do portfólio",
+      "depth": 3,
+      "position": "a48ET"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-010bba6f729f",
+      "path": "Base de Conhecimento / CRM",
+      "slug_id": "4ilVod51jl",
+      "title": "CRM",
+      "depth": 2,
+      "position": "a62Ih"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fee-5ad75e5a1c79",
+      "path": "Base de Conhecimento / CRM / Carteiras",
+      "slug_id": "wJnCc1sqTf",
+      "title": "Carteiras",
+      "depth": 3,
+      "position": "a15Bi"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fee-4a6edf1d8504",
+      "path": "Base de Conhecimento / CRM / Carteiras / Alterar ou excluir uma carteira",
+      "slug_id": "tH2ceAeFQt",
+      "title": "Alterar ou excluir uma carteira",
+      "depth": 4,
+      "position": "a31D8"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fee-4ea9458936d1",
+      "path": "Base de Conhecimento / CRM / Carteiras / Criar uma nova carteira",
+      "slug_id": "Ew9bbARyLX",
+      "title": "Criar uma nova carteira",
+      "depth": 4,
+      "position": "a127h"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fee-5098040b3d37",
+      "path": "Base de Conhecimento / CRM / Carteiras / Incluir contato na carteira",
+      "slug_id": "Jx9pRg0ecL",
+      "title": "Incluir contato na carteira",
+      "depth": 4,
+      "position": "a24X6"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fee-56518a0ea956",
+      "path": "Base de Conhecimento / CRM / Carteiras / Tipos de carteiras",
+      "slug_id": "sjanAwWDwj",
+      "title": "Tipos de carteiras",
+      "depth": 4,
+      "position": "a00iR"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fee-6cf7e84cf26c",
+      "path": "Base de Conhecimento / CRM / Contato",
+      "slug_id": "wGAxNjkKrt",
+      "title": "Contato",
+      "depth": 3,
+      "position": "a0Bed"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fee-5f49655982b2",
+      "path": "Base de Conhecimento / CRM / Contato / Cadastrar contato",
+      "slug_id": "6ZhP5y9Ggv",
+      "title": "Cadastrar contato",
+      "depth": 4,
+      "position": "a06PB"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fee-614a5b5bb68a",
+      "path": "Base de Conhecimento / CRM / Contato / Exportar Base de Contatos",
+      "slug_id": "3VJ0F5iToA",
+      "title": "Exportar Base de Contatos",
+      "depth": 4,
+      "position": "a31n5"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fee-64953bf8159a",
+      "path": "Base de Conhecimento / CRM / Contato / Importar Contatos em Lote",
+      "slug_id": "0TQ0xELkf8",
+      "title": "Importar Contatos em Lote",
+      "depth": 4,
+      "position": "a2C0x"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fee-6923cc7c304e",
+      "path": "Base de Conhecimento / CRM / Contato / Inserir etiqueta",
+      "slug_id": "3lHBgPexlF",
+      "title": "Inserir etiqueta",
+      "depth": 4,
+      "position": "a17x3"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fee-88060caf43a7",
+      "path": "Base de Conhecimento / CRM / Painéis de Vendas",
+      "slug_id": "W3aW7MMfX5",
+      "title": "Painéis de Vendas",
+      "depth": 3,
+      "position": "a2CDj"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fee-701374d48739",
+      "path": "Base de Conhecimento / CRM / Painéis de Vendas / Como criar e configurar um Painel de Vendas",
+      "slug_id": "fijBH7QCyc",
+      "title": "Como criar e configurar um Painel de Vendas",
+      "depth": 4,
+      "position": "a08HX"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fee-8097f973c912",
+      "path": "Base de Conhecimento / CRM / Painéis de Vendas / Como marcar um card como Ganho",
+      "slug_id": "yUxH5hA9kF",
+      "title": "Como marcar um card como Ganho",
+      "depth": 4,
+      "position": "a23ku"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fee-87eca0c85add",
+      "path": "Base de Conhecimento / CRM / Painéis de Vendas / Como marcar um card como Perda",
+      "slug_id": "ULmSgH34B1",
+      "title": "Como marcar um card como Perda",
+      "depth": 4,
+      "position": "a3BXg"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fee-76fea1023d1b",
+      "path": "Base de Conhecimento / CRM / Painéis de Vendas / Duplicação de Painel de Vendas",
+      "slug_id": "cbV8FQcbpk",
+      "title": "Duplicação de Painel de Vendas",
+      "depth": 4,
+      "position": "a15Z4"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fee-78dd59ce025a",
+      "path": "Base de Conhecimento / CRM / Painéis de Vendas / Exclusão Segura de Etapas do Painel",
+      "slug_id": "i3cmOe4a93",
+      "title": "Exclusão Segura de Etapas do Painel",
+      "depth": 4,
+      "position": "a50bv"
+    },
+    {
+      "id": "019dc2b8-afa9-732e-8fee-7da7ed446f1a",
+      "path": "Base de Conhecimento / CRM / Painéis de Vendas / Filtros por Situação no CRM",
+      "slug_id": "oWMyDOOeWi",
+      "title": "Filtros por Situação no CRM",
+      "depth": 4,
+      "position": "a4A01"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-5b75acedfb21",
+      "path": "Base de Conhecimento / FAQ",
+      "slug_id": "8ElKRLcQRa",
+      "title": "FAQ",
+      "depth": 2,
+      "position": "aA1sx"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-3040d6a05a66",
+      "path": "Base de Conhecimento / FAQ / Acessar página de suporte",
+      "slug_id": "PADgeJF9CG",
+      "title": "Acessar página de suporte",
+      "depth": 3,
+      "position": "a64i4"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-37e5f6c9626b",
+      "path": "Base de Conhecimento / FAQ / Códigos de Erros da Meta",
+      "slug_id": "dR0xMQszg8",
+      "title": "Códigos de Erros da Meta",
+      "depth": 3,
+      "position": "a37GV"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-3acd117d0e93",
+      "path": "Base de Conhecimento / FAQ / Mensagem \"Aguardando Mensagem\"",
+      "slug_id": "SEKeOfcE9l",
+      "title": "Mensagem \"Aguardando Mensagem\"",
+      "depth": 3,
+      "position": "a213f"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-3c3ae0a7f8d6",
+      "path": "Base de Conhecimento / FAQ / Mensagens do Instagram não chegam",
+      "slug_id": "RtgJT01OUa",
+      "title": "Mensagens do Instagram não chegam",
+      "depth": 3,
+      "position": "a560X"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-415a13d5bfb0",
+      "path": "Base de Conhecimento / FAQ / Número Privado (LID) e Unificação de Contatos",
+      "slug_id": "QKPLpWfcqS",
+      "title": "Número Privado (LID) e Unificação de Contatos",
+      "depth": 3,
+      "position": "a738y"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-47c6505142ed",
+      "path": "Base de Conhecimento / FAQ / Por que a Meta rejeita seus Modelos de Marketing?",
+      "slug_id": "vBUmypwMKO",
+      "title": "Por que a Meta rejeita seus Modelos de Marketing?",
+      "depth": 3,
+      "position": "a82VZ"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-4aee8e8fefeb",
+      "path": "Base de Conhecimento / FAQ / Por que a Meta rejeita seus Modelos de Utilidade?",
+      "slug_id": "QckZPngH1L",
+      "title": "Por que a Meta rejeita seus Modelos de Utilidade?",
+      "depth": 3,
+      "position": "a963u"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-4ce013187507",
+      "path": "Base de Conhecimento / FAQ / Rate Limit da API Não Oficial do WhatsApp",
+      "slug_id": "TaT6eCG0Vn",
+      "title": "Rate Limit da API Não Oficial do WhatsApp",
+      "depth": 3,
+      "position": "a16Dn"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-52a676921f2f",
+      "path": "Base de Conhecimento / FAQ / Solicitar revisão de banimento",
+      "slug_id": "3P7uTSaOdM",
+      "title": "Solicitar revisão de banimento",
+      "depth": 3,
+      "position": "a4878"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-56f93cc1f3f7",
+      "path": "Base de Conhecimento / FAQ / Status de Integridade do Canal",
+      "slug_id": "jnC6hYgpnc",
+      "title": "Status de Integridade do Canal",
+      "depth": 3,
+      "position": "a01SH"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-660b7be5e134",
+      "path": "Base de Conhecimento / Pagamentos",
+      "slug_id": "l5NDE8pDEQ",
+      "title": "Pagamentos",
+      "depth": 2,
+      "position": "a48bv"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-5cbdc38aadc4",
+      "path": "Base de Conhecimento / Pagamentos / Configurar pagamento",
+      "slug_id": "k7pjQVnFDT",
+      "title": "Configurar pagamento",
+      "depth": 3,
+      "position": "a06SW"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-61b736b499ae",
+      "path": "Base de Conhecimento / Pagamentos / Consultar extrato de pagamento",
+      "slug_id": "sbMEClTYtm",
+      "title": "Consultar extrato de pagamento",
+      "depth": 3,
+      "position": "a15ju"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-72009d607486",
+      "path": "Base de Conhecimento / Perfil do WhatsApp Business",
+      "slug_id": "YKVbl4NiqG",
+      "title": "Perfil do WhatsApp Business",
+      "depth": 2,
+      "position": "a3Bov"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-6ab53ebcbca8",
+      "path": "Base de Conhecimento / Perfil do WhatsApp Business / Alterar display name",
+      "slug_id": "n0NPbxzq65",
+      "title": "Alterar display name",
+      "depth": 3,
+      "position": "a08BH"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-6e0b5a5c8f59",
+      "path": "Base de Conhecimento / Perfil do WhatsApp Business / Alterar perfil do WhatsApp",
+      "slug_id": "pg9QSmkMaF",
+      "title": "Alterar perfil do WhatsApp",
+      "depth": 3,
+      "position": "a139X"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-8ef3101fdf7d",
+      "path": "Base de Conhecimento / Portfólio Empresarial",
+      "slug_id": "sNCKK63np2",
+      "title": "Portfólio Empresarial",
+      "depth": 2,
+      "position": "a28CS"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-75b130479275",
+      "path": "Base de Conhecimento / Portfólio Empresarial / Alterar logomarca do portfólio",
+      "slug_id": "zaxyNyliJp",
+      "title": "Alterar logomarca do portfólio",
+      "depth": 3,
+      "position": "a49EK"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-7ac297f94ec2",
+      "path": "Base de Conhecimento / Portfólio Empresarial / Criar portfólio empresarial",
+      "slug_id": "RydMROsc4V",
+      "title": "Criar portfólio empresarial",
+      "depth": 3,
+      "position": "a07AN"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-7eaf630118d1",
+      "path": "Base de Conhecimento / Portfólio Empresarial / Desativar autenticação em dois fatores",
+      "slug_id": "sGWZx6Mzqu",
+      "title": "Desativar autenticação em dois fatores",
+      "depth": 3,
+      "position": "a507S"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-8137ba6840e6",
+      "path": "Base de Conhecimento / Portfólio Empresarial / Incluir administradores",
+      "slug_id": "j1gS0kYT1D",
+      "title": "Incluir administradores",
+      "depth": 3,
+      "position": "a31va"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-86201031047d",
+      "path": "Base de Conhecimento / Portfólio Empresarial / Informações do portfólio",
+      "slug_id": "NO7tyNyeg3",
+      "title": "Informações do portfólio",
+      "depth": 3,
+      "position": "a25Zv"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-8bf8a38cd79d",
+      "path": "Base de Conhecimento / Portfólio Empresarial / Verificar portfólio empresarial",
+      "slug_id": "SZnbMVCYKF",
+      "title": "Verificar portfólio empresarial",
+      "depth": 3,
+      "position": "a18ru"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-a2dafda69199",
+      "path": "Base de Conhecimento / Relatórios",
+      "slug_id": "RSGfBWFuE0",
+      "title": "Relatórios",
+      "depth": 2,
+      "position": "a8BY4"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-926f1148a8a0",
+      "path": "Base de Conhecimento / Relatórios / Como concluir atendimentos em massa",
+      "slug_id": "eXauH48MjB",
+      "title": "Como concluir atendimentos em massa",
+      "depth": 3,
+      "position": "a25YK"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-962a4a8e9d9a",
+      "path": "Base de Conhecimento / Relatórios / Como exportar mensagens na Persua",
+      "slug_id": "3OvqMPy6bC",
+      "title": "Como exportar mensagens na Persua",
+      "depth": 3,
+      "position": "a10Pd"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-9b794454010b",
+      "path": "Base de Conhecimento / Relatórios / Como exportar relatório na Persua",
+      "slug_id": "7myQkHo3oP",
+      "title": "Como exportar relatório na Persua",
+      "depth": 3,
+      "position": "a08DY"
+    },
+    {
+      "id": "019dc2b8-afaa-756d-b3d7-9ee4184f4aee",
+      "path": "Base de Conhecimento / Relatórios / Consumo de Infraestrutura",
+      "slug_id": "CJIxV0XK2A",
+      "title": "Consumo de Infraestrutura",
+      "depth": 3,
+      "position": "a3BBH"
+    }
+  ],
+  "shares": [
+    {
+      "key": "6n6rfnlxmq",
+      "page_path": "Base de Conhecimento",
+      "include_sub_pages": true,
+      "search_indexing": true
+    }
+  ]
+}
