@@ -45,4 +45,4 @@ RUN sed -i 's|</head>|<link rel="stylesheet" href="/persua-custom.css?v=8" /></h
 # via Settings > Import. Pra manter o redirect funcionando, voce tem 2 opcoes:
 #   1. Editar paginas via UI direto (mantem shareId, simples)
 #   2. Deletar/reimportar e atualizar o SHARE_ID + sufixo aqui no Dockerfile
-RUN sed -i 's|</head>|<script>if(location.pathname==="/"\&\&!location.search)location.replace("/share/o8yw2uvuas/p/base-de-conhecimento-zKTcPfquod");</script></head>|' /app/apps/client/dist/index.html
+RUN sed -i 's|</head>|<script>if(location.pathname==="/"\&\&!location.search)location.replace("/share/gbgk3jiefs/p/base-de-conhecimento-7fjGrtZ7DD");</script></head>|' /app/apps/client/dist/index.html
