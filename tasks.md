@@ -3,7 +3,7 @@
 ## Producao em docs.persua.com.br (LIVE)
 
 - **URL publica:** https://docs.persua.com.br (redirect automatico pra share root)
-- **Share atual:** `gbgk3jiefs` -> base-de-conhecimento-7fjGrtZ7DD (atualizado 2026-04-24)
+- **Share atual:** `6n6rfnlxmq` -> base-de-conhecimento-8WQkapJosF (atualizado 2026-04-24, segundo reimport do dia)
 - **Repo:** github.com/adejaimejr/docs-persua
 - **Volume:** `docs-persua-data`
 - **Postgres:** `postgres_postgres` (db dedicado `docmost`)
