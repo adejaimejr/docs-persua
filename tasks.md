@@ -3,9 +3,9 @@
 ## Producao em docs.persua.com.br (LIVE)
 
 - **URL publica:** https://docs.persua.com.br (redirect automatico pra share root)
-- **Share atual:** `o8yw2uvuas` -> base-de-conhecimento-zKTcPfquod
+- **Share atual:** `gbgk3jiefs` -> base-de-conhecimento-7fjGrtZ7DD (atualizado 2026-04-24)
 - **Repo:** github.com/adejaimejr/docs-persua
-- **Volume:** `docs-persua-data` (531 imagens, 67.8 MB)
+- **Volume:** `docs-persua-data`
 - **Postgres:** `postgres_postgres` (db dedicado `docmost`)
 - **Redis:** `redis_redis` (DB 4 reservado)
 - **Constraint:** node.hostname=manager1
@@ -23,15 +23,19 @@
 
 ## Em progresso / aguardando usuario
 - **Capturar telas Persua** em batch e dropar nos respectivos `drafts/assets/<slug>/_persua/`
-  - 101 tutoriais com drafts prontos, 245 imagens flw no total
-  - 9 imagens Persua ja capturadas (conexao-whatsapp-cloud-api) = 3% do total
-  - Pra cada imagem capturada, rodar `python3 scripts/build_master_zip.py` regenera o ZIP automaticamente
+  - 101 tutoriais com drafts prontos, 556 imagens (incluindo jpg/jpeg/gif) no total
+  - 45 imagens Persua ja capturadas em 14 slugs = 8% do total (baseline 2026-04-24)
+  - 4 slugs 100% Persua: acessando-pela-web, abrir-dados-do-contato, adicionar-etapa, assumir-atendimento
+  - Pra cada batch capturado, rodar `python3 scripts/build_master_zip.py` regenera o ZIP automaticamente
 
 ## Proximo passo
-- **Reimportar ZIP master no Docmost** pra ver as 101 paginas populadas
-  - No Docmost, apagar raiz "Base de Conhecimento" (cascade apaga as 48 antigas)
-  - Settings > Import > upload do ZIP atualizado (base-de-conhecimento-master.zip)
-  - Validar visualmente a nova estrutura de 138 paginas
+- **Continuar capturas Persua** focando em completar os 10 slugs parciais:
+  - alterar-perfil-do-whatsapp (1/5), api-nao-oficial (1/12), api-oficial (2/9)
+  - apps-ativar-app-de-pagamento (3/6), apps-cancelar-estornar-pagamento (5/7)
+  - apps-consultar-pagamento (5/6), apps-integrar-com-banco-asaas (2/5)
+  - arquivar-campanha (5/7), ativar-e-desativar-funcionalidade (3/9)
+  - conexao-whatsapp-cloud-api (9/16)
+- Depois de cada batch, repetir o fluxo de update em producao (build, push, reimport, update-share-id)
 
 ## Estatisticas atuais
 
@@ -47,21 +51,21 @@
 - 237/240 imagens baixadas do CDN GitBook (98.75%), 3 falharam com 404
 
 ### ZIP master
-- 138 paginas .md (11 secoes + subpaginas aninhadas ate nivel 3)
-- 245 imagens PNG
-- Tamanho: 33 MB
-- 105 paginas populadas com draft, 0 placeholders
-  (paginas "parent de secao" e uma pagina sem leafs usam geracao automatica)
+- 156 paginas .md (11 secoes + subpaginas aninhadas ate nivel 3)
+- 556 imagens (png + jpg/jpeg/gif suportados desde 2026-04-24)
+- Tamanho: 76 MB
+- 120 paginas populadas com draft, 0 placeholders
+- Cobertura overlay Persua: 45/556 imagens (8%)
 
 ## Backlog priorizado
 
 ### Prioridade ALTA, Tier 1 onboarding (8 paginas)
-- [x] Conexao WhatsApp Cloud API (piloto completo com 9 Persua ja dropadas)
-- [ ] Acessando a Plataforma pela Web
+- [~] Conexao WhatsApp Cloud API (9/16 Persua, parcial)
+- [x] Acessando a Plataforma pela Web (1/1 Persua)
 - [ ] Acessando a Plataforma pelo App Movel
-- [ ] Abrir Dados do Contato
+- [x] Abrir Dados do Contato (3/3 Persua)
 - [ ] Iniciar atendimento
-- [ ] Assumir atendimento
+- [x] Assumir atendimento (1/1 Persua, gif animado)
 - [ ] Transferir atendimento
 - [ ] Concluir e classificar atendimento
 
@@ -78,7 +82,7 @@
 - [ ] Alterar logomarca do portfolio
 - [ ] Desativar autenticacao em 2 fatores
 - [ ] Alterar nome de exibicao (Display Name)
-- [ ] Alterar perfil do WhatsApp
+- [~] Alterar perfil do WhatsApp (1/5 Persua, parcial)
 - [ ] Configurar pagamento (Meta) + Consultar extrato
 
 ### Prioridade MEDIA, Atendimento avancado + Apps (60+ paginas)
@@ -138,6 +142,9 @@
 - [x] Conversao completa: 101 drafts gerados + 237/240 imagens baixadas (2026-04-24)
 - [x] TREE expandido: 48 -> 138 paginas, SLUG_MAP com 100+ entradas (2026-04-24)
 - [x] ZIP master v2: 138 paginas .md + 245 imagens, 33MB (2026-04-24)
+- [x] Batch capturas Persua: 13 slugs novos + 36 imagens em _persua/ (2026-04-24)
+- [x] Suporte jpg/jpeg/gif no overlay _persua/ no build_master_zip.py (2026-04-24)
+- [x] Deploy do batch: ZIP reimportado, share atualizado pra gbgk3jiefs (2026-04-24)
 
 ## Fora de escopo (nao fazer)
 - Destravar features da EE (API, SSO, Audit, IA): licenca comercial
