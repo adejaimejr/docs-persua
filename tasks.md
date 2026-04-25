@@ -10,16 +10,55 @@
 - **Redis:** `redis_redis` (DB 4 reservado)
 - **Constraint:** node.hostname=manager1
 
-### Fluxo de update em producao (Caminho 2 escolhido)
+### Fluxo de update em producao (com URL stability)
+
+Premissa: links profundos ja distribuidos pra clientes (`/share/<key>/p/<slug>-<id>`)
+nao podem quebrar entre reimports. Solucao: snapshot baseline versionado em
+`snapshot/urls-baseline.json` + restore SQL gerado pos-reimport que reescreve
+`pages.slug_id` e `shares.key` pros valores antigos.
+
+**Pre-requisito (uma vez):** ter `snapshot/urls-baseline.json` no repo. Geracao:
+```bash
+# No servidor Dokploy ou via psql remoto:
+docker exec -i $(docker ps -q -f name=postgres_postgres) \
+  psql -U docmost -d docmost -t -A < scripts/dump-state.sql > /tmp/baseline.json
+# Copiar /tmp/baseline.json pro repo como snapshot/urls-baseline.json e commitar.
+```
+
+**Fluxo a cada update:**
 
 1. Edita drafts + captura telas em `_persua/` localmente
 2. `python3 scripts/build_master_zip.py`
 3. `git add . && git commit -m "..." && git push`
 4. No Docmost UI: delete raiz "Base de Conhecimento" + esvazia lixeira
 5. Settings > Import > upload do ZIP atualizado
-6. Recompartilha publicamente, copia URL gerada
-7. `./scripts/update-share-id.sh <URL_DO_NOVO_SHARE>`
-8. `git add Dockerfile && git commit && git push` (Dokploy autodeploy)
+6. Recompartilha publicamente (gera key temporaria, vai ser sobrescrita)
+7. **Dump do estado atual no servidor:**
+   ```bash
+   docker exec -i $(docker ps -q -f name=postgres_postgres) \
+     psql -U docmost -d docmost -t -A < scripts/dump-state.sql > /tmp/current.json
+   ```
+8. **Copia `/tmp/current.json` pra local em `snapshot/state-current.json`**
+9. **Gera SQL de restore:**
+   ```bash
+   python3 scripts/build-restore-sql.py \
+     --baseline snapshot/urls-baseline.json \
+     --current snapshot/state-current.json \
+     --output snapshot/restore.sql
+   ```
+10. **Roda o SQL no Postgres prod:**
+    ```bash
+    docker exec -i $(docker ps -q -f name=postgres_postgres) \
+      psql -U docmost -d docmost < snapshot/restore.sql
+    ```
+11. Pronto. shareId raiz + slug_id de todas as paginas voltam aos valores do
+    baseline. Todos os links profundos previamente distribuidos continuam vivos.
+    Nao precisa atualizar `Dockerfile` nem `update-share-id.sh` (key da raiz e
+    estavel agora).
+
+**Quando precisa atualizar o baseline:**
+- Estrutura mudou (paginas novas, paginas renomeadas, hierarquia alterada)
+- Apos updates assim, regerar baseline: rodar passo 7 e copiar pra `urls-baseline.json`
 
 ## Em progresso / aguardando usuario
 - **Capturar telas Persua** em batch e dropar nos respectivos `drafts/assets/<slug>/_persua/`

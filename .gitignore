@@ -30,6 +30,14 @@ import-packages/
 cache/flw-raw/
 
 # ----------------------------------------------------------------------------
+# Snapshots de estado do banco (URL stability)
+# ----------------------------------------------------------------------------
+# urls-baseline.json e a fonte de verdade (versionada).
+# state-current.json e restore.sql sao transientes (gerados a cada reimport).
+snapshot/state-*.json
+snapshot/restore*.sql
+
+# ----------------------------------------------------------------------------
 # Drafts Persua (adaptados do flw)
 # ----------------------------------------------------------------------------
 # Os arquivos .md de draft sao gerados pelo convert_flw_to_persua.py a partir
